@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Guru Mohan Thetaneela — React.js Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #060C18;
+            --surface: #0B1424;
+            --card: #0F1D33;
+            --border: #1A2D50;
+            --gold: #F0A500;
+            --gold2: #FFD166;
+            --cyan: #22D3EE;
+            --cyan2: #67E8F9;
+            --text: #E2EAF8;
+            --muted: #5B7299;
+            --sub: #8FA3C8;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 99px
+        }
+
+        ::selection {
+            background: rgba(240, 165, 0, 0.25);
+            color: var(--gold2)
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes slideRight {
+            from {
+                width: 0
+            }
+
+            to {
+                width: var(--w)
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.4
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+
+        @keyframes rotateSlow {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% center
+            }
+
+            100% {
+                background-position: -200% center
+            }
+        }
+
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 12px rgba(240, 165, 0, 0.2)
+            }
+
+            50% {
+                box-shadow: 0 0 28px rgba(240, 165, 0, 0.5)
+            }
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.6
+            }
+
+            50% {
+                opacity: 1
+            }
+
+            100% {
+                transform: translateY(-120px) translateX(40px);
+                opacity: 0
+            }
+        }
+
+        @keyframes scanline {
+            0% {
+                top: -10%
+            }
+
+            100% {
+                top: 110%
+            }
+        }
+
+        @keyframes scalePop {
+            0% {
+                transform: scale(0.8);
+                opacity: 0
+            }
+
+            70% {
+                transform: scale(1.05)
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useCallback } = React;
+
+        /* ═══════════ DATA ═══════════ */
+        const NAV_LINKS = ['About', 'Skills', 'Experience', 'Projects', 'Education', 'Contact'];
+
+        const SKILLS = [
+            { name: 'React.js', level: 95, color: '#22D3EE', years: '3+ yrs' },
+            { name: 'Material-UI (MUI)', level: 92, color: '#F0A500', years: '3+ yrs' },
+            { name: 'JavaScript / ES6+', level: 90, color: '#22D3EE', years: '3+ yrs' },
+            { name: 'Spring Boot', level: 78, color: '#F0A500', years: '1.5 yrs' },
+            { name: 'Spring Security & JWT', level: 75, color: '#22D3EE', years: '1.5 yrs' },
+            { name: 'MySQL & JPA/Hibernate', level: 74, color: '#F0A500', years: '1.5 yrs' },
+            { name: 'REST API Development', level: 85, color: '#22D3EE', years: '2+ yrs' },
+            { name: 'Git & GitLab CI/CD', level: 80, color: '#F0A500', years: '3+ yrs' },
+        ];
+
+        const TECH_BADGES = [
+            'React.js', 'Material-UI', 'JavaScript', 'HTML5', 'CSS3', 'React Router',
+            'Java', 'Spring Boot', 'Spring Security', 'JWT', 'JPA/Hibernate', 'MySQL',
+            'REST APIs', 'Git', 'Swagger', 'Postman', 'Agile/Scrum', 'RBAC'
+        ];
+
+        const PROJECTS = [
+            {
+                id: 1,
+                name: 'Enterprise Pharma Management System',
+                period: 'Mar 2024 – Present · 2 Years',
+                tag: 'ONGOING',
+                tagColor: '#22D3EE',
+                stack: ['React.js', 'Material-UI', 'Spring Boot', 'JWT', 'MySQL', 'GitLab'],
+                points: [
+                    'Led frontend with React.js & MUI — built dashboards, data grids & multi-step approval workflows',
+                    'Secured REST APIs with Spring Boot JWT & RBAC across Admin, Approver, Reviewer, User roles',
+                    'Designed MySQL schemas via Spring Data JPA for inventory, procurement & compliance data',
+                    'Managed Agile sprints & GitLab CI/CD; coordinated client UAT & production releases',
+                ],
+                icon: '🧬',
+            },
+            {
+                id: 2,
+                name: 'HR & Payroll Management System',
+                period: 'Mar 2023 – Mar 2024 · 1 Year (Completed)',
+                tag: 'DELIVERED',
+                tagColor: '#F0A500',
+                stack: ['React.js', 'Material-UI', 'Spring Boot', 'JWT', 'MySQL', 'REST APIs'],
+                points: [
+                    'Built all responsive HR workflow screens — employee listings, payroll dashboards & leave management',
+                    'Developed CRUD operations for Employee, Attendance, Payroll, Leave using Spring Boot & JPA',
+                    'Implemented Spring Security + JWT with automated payslip generation & email notification system',
+                    'Delivered end-to-end within 1 year — led to promotion & assignment to Enterprise Pharma project',
+                ],
+                icon: '💼',
+            },
+        ];
+
+        const STATS = [
+            { label: 'Years Experience', value: '3+', icon: '⚡' },
+            { label: 'Projects Delivered', value: '2', icon: '🚀' },
+            { label: 'Modules Built', value: '20+', icon: '🧩' },
+            { label: 'User Roles Secured', value: '4', icon: '🔒' },
+        ];
+
+        /* ═══════════ HOOKS ═══════════ */
+        function useInView(threshold = 0.15) {
+            const ref = useRef(null);
+            const [visible, setVisible] = useState(false);
+            useEffect(() => {
+                const obs = new IntersectionObserver(([e]) => {
+                    if (e.isIntersecting) { setVisible(true); obs.disconnect(); }
+                }, { threshold });
+                if (ref.current) obs.observe(ref.current);
+                return () => obs.disconnect();
+            }, [threshold]);
+            return [ref, visible];
+        }
+
+        /* ═══════════ PARTICLE CANVAS ═══════════ */
+        function ParticleCanvas() {
+            const canvasRef = useRef(null);
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                const ctx = canvas.getContext('2d');
+                let W = canvas.width = window.innerWidth;
+                let H = canvas.height = window.innerHeight;
+                let raf;
+                const particles = Array.from({ length: 60 }, () => ({
+                    x: Math.random() * W, y: Math.random() * H,
+                    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+                    r: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random() * 0.4 + 0.1,
+                    gold: Math.random() > 0.7,
+                }));
+                function draw() {
+                    ctx.clearRect(0, 0, W, H);
+                    particles.forEach(p => {
+                        p.x += p.vx; p.y += p.vy;
+                        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+                        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = p.gold ? `rgba(240,165,0,${p.alpha})` : `rgba(34,211,238,${p.alpha})`;
+                        ctx.fill();
+                    });
+                    // connection lines
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 100) {
+                                ctx.beginPath();
+                                ctx.strokeStyle = `rgba(90,130,200,${0.08 * (1 - dist / 100)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                    raf = requestAnimationFrame(draw);
+                }
+                draw();
+                const resize = () => {
+                    W = canvas.width = window.innerWidth;
+                    H = canvas.height = window.innerHeight;
+                };
+                window.addEventListener('resize', resize);
+                return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
+            }, []);
+            return <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} />;
+        }
+
+        /* ═══════════ TYPEWRITER ═══════════ */
+        function Typewriter({ words, speed = 80, pause = 1800 }) {
+            const [text, setText] = useState('');
+            const [wIdx, setWIdx] = useState(0);
+            const [charIdx, setCharIdx] = useState(0);
+            const [deleting, setDeleting] = useState(false);
+            useEffect(() => {
+                const word = words[wIdx];
+                let timeout;
+                if (!deleting && charIdx <= word.length) {
+                    timeout = setTimeout(() => {
+                        setText(word.slice(0, charIdx));
+                        setCharIdx(c => c + 1);
+                    }, speed);
+                } else if (!deleting && charIdx > word.length) {
+                    timeout = setTimeout(() => setDeleting(true), pause);
+                } else if (deleting && charIdx >= 0) {
+                    timeout = setTimeout(() => {
+                        setText(word.slice(0, charIdx));
+                        setCharIdx(c => c - 1);
+                    }, speed / 2);
+                } else {
+                    setDeleting(false);
+                    setWIdx(i => (i + 1) % words.length);
+                }
+                return () => clearTimeout(timeout);
+            }, [text, charIdx, deleting, wIdx, words, speed, pause]);
+            return (
+                <span style={{ color: 'var(--gold)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(1rem,2.5vw,1.25rem)' }}>
+                    {text}<span style={{ animation: 'blink 1s infinite', color: 'var(--cyan)' }}>|</span>
+                </span>
+            );
+        }
+
+        /* ═══════════ NAVBAR ═══════════ */
+        function Navbar() {
+            const [scrolled, setScrolled] = useState(false);
+            const [open, setOpen] = useState(false);
+            useEffect(() => {
+                const h = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', h);
+                return () => window.removeEventListener('scroll', h);
+            }, []);
+            const navStyle = {
+                position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+                padding: '0 clamp(1rem,5vw,3rem)',
+                background: scrolled ? 'rgba(6,12,24,0.92)' : 'transparent',
+                backdropFilter: scrolled ? 'blur(16px)' : 'none',
+                borderBottom: scrolled ? '1px solid rgba(240,165,0,0.12)' : 'none',
+                transition: 'all 0.4s ease',
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                height: scrolled ? '64px' : '80px',
+            };
+            const scrollTo = (id) => {
+                document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
+                setOpen(false);
+            };
+            return (
+                <nav style={navStyle}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{
+                            width: 38, height: 38, borderRadius: '50%',
+                            background: 'linear-gradient(135deg,var(--gold),var(--cyan))',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '16px', color: '#06111f',
+                            boxShadow: '0 0 18px rgba(240,165,0,0.4)', flexShrink: 0,
+                        }}>GM</div>
+                        <div>
+                            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.05rem', letterSpacing: '0.03em', color: 'var(--text)', lineHeight: 1.1 }}>Guru Mohan</div>
+                            <div style={{ fontSize: '0.65rem', color: 'var(--gold)', letterSpacing: '0.12em', fontFamily: 'var(--font-mono)' }}>REACT.JS DEVELOPER</div>
+                        </div>
+                    </div>
+
+                    {/* Desktop links */}
+                    <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="desktop-nav">
+                        {NAV_LINKS.map(l => (
+                            <button key={l} onClick={() => scrollTo(l)}
+                                style={{
+                                    background: 'none', border: 'none', cursor: 'pointer', color: 'var(--sub)',
+                                    fontSize: '0.85rem', fontFamily: 'var(--font-body)', fontWeight: 500,
+                                    letterSpacing: '0.06em', padding: '4px 0', position: 'relative',
+                                    transition: 'color 0.2s',
+                                }}
+                                onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold)' }}
+                                onMouseLeave={e => { e.currentTarget.style.color = 'var(--sub)' }}
+                            >{l}</button>
+                        ))}
+                        <button onClick={() => scrollTo('Contact')} style={{
+                            background: 'linear-gradient(135deg,var(--gold),#e09400)',
+                            border: 'none', borderRadius: '6px', padding: '8px 20px',
+                            cursor: 'pointer', color: '#06111f', fontWeight: 700, fontSize: '0.82rem',
+                            fontFamily: 'var(--font-body)', letterSpacing: '0.04em',
+                            boxShadow: '0 4px 18px rgba(240,165,0,0.35)', transition: 'all 0.2s',
+                        }}
+                            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(240,165,0,0.5)' }}
+                            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 18px rgba(240,165,0,0.35)' }}
+                        >Hire Me</button>
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button onClick={() => setOpen(o => !o)} style={{
+                        display: 'none', background: 'none', border: 'none', cursor: 'pointer',
+                        color: 'var(--text)', fontSize: '1.5rem',
+                    }} className="mobile-menu-btn">☰</button>
+
+                    {/* Mobile dropdown */}
+                    {open && (
+                        <div style={{
+                            position: 'fixed', top: '64px', left: 0, right: 0,
+                            background: 'rgba(11,20,36,0.98)', backdropFilter: 'blur(20px)',
+                            borderBottom: '1px solid var(--border)', padding: '1.5rem',
+                            display: 'flex', flexDirection: 'column', gap: '1.2rem',
+                            animation: 'fadeIn 0.2s ease', zIndex: 999,
+                        }}>
+                            {NAV_LINKS.map(l => (
+                                <button key={l} onClick={() => scrollTo(l)}
+                                    style={{
+                                        background: 'none', border: 'none', cursor: 'pointer',
+                                        color: 'var(--sub)', fontSize: '1rem', fontFamily: 'var(--font-body)',
+                                        textAlign: 'left', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)',
+                                    }}>{l}</button>
+                            ))}
+                        </div>
+                    )}
+
+                    <style>{`
+        @media(max-width:768px){.desktop-nav{display:none!important}.mobile-menu-btn{display:block!important}}
+      `}</style>
+                </nav>
+            );
+        }
+
+        /* ═══════════ HERO ═══════════ */
+        function Hero() {
+            const scrollToAbout = () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+            return (
+                <section id="home" style={{
+                    position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center',
+                    justifyContent: 'center', overflow: 'hidden',
+                    background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(240,165,0,0.05) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(34,211,238,0.04) 0%, transparent 60%), var(--bg)',
+                }}>
+                    <ParticleCanvas />
+
+                    {/* Grid overlay */}
+                    <div style={{
+                        position: 'absolute', inset: 0,
+                        backgroundImage: 'linear-gradient(rgba(240,165,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(240,165,0,0.03) 1px,transparent 1px)',
+                        backgroundSize: '60px 60px', pointerEvents: 'none',
+                    }} />
+
+                    {/* Glow orbs */}
+                    <div style={{
+                        position: 'absolute', top: '15%', right: '10%', width: 400, height: 400,
+                        borderRadius: '50%', background: 'radial-gradient(circle,rgba(240,165,0,0.06) 0%,transparent 70%)',
+                        animation: 'float 6s ease-in-out infinite', pointerEvents: 'none'
+                    }} />
+                    <div style={{
+                        position: 'absolute', bottom: '20%', left: '5%', width: 300, height: 300,
+                        borderRadius: '50%', background: 'radial-gradient(circle,rgba(34,211,238,0.05) 0%,transparent 70%)',
+                        animation: 'float 8s ease-in-out infinite reverse', pointerEvents: 'none'
+                    }} />
+
+                    <div style={{
+                        position: 'relative', zIndex: 1, textAlign: 'center',
+                        padding: '0 clamp(1rem,6vw,4rem)', maxWidth: 900,
+                        animation: 'fadeUp 0.8s ease forwards',
+                    }}>
+                        {/* Badge */}
+                        <div style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '8px',
+                            background: 'rgba(240,165,0,0.08)', border: '1px solid rgba(240,165,0,0.25)',
+                            borderRadius: '99px', padding: '6px 18px', marginBottom: '2rem',
+                            animation: 'fadeIn 0.6s ease 0.2s both',
+                        }}>
+                            <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--gold)', animation: 'pulse 2s infinite' }} />
+                            <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--gold)', letterSpacing: '0.12em' }}>AVAILABLE FOR OPPORTUNITIES</span>
+                        </div>
+
+                        {/* Name */}
+                        <h1 style={{
+                            fontFamily: 'var(--font-display)',
+                            fontSize: 'clamp(2.8rem,8vw,6rem)',
+                            fontWeight: 700, lineHeight: 1.0, letterSpacing: '-0.01em',
+                            background: 'linear-gradient(135deg,#E2EAF8 0%,var(--gold2) 45%,var(--gold) 100%)',
+                            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text', marginBottom: '0.4rem',
+                            animation: 'fadeUp 0.8s ease 0.3s both',
+                        }}>
+                            Guru Mohan<br />Thetaneela
+                        </h1>
+
+                        {/* Role typewriter */}
+                        <div style={{ height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.8rem', animation: 'fadeIn 0.8s ease 0.6s both', opacity: 0 }}>
+                            <Typewriter words={['React.js Developer', 'Full-Stack Engineer', 'Spring Boot Developer', 'Enterprise UI Architect']} />
+                        </div>
+
+                        {/* Tagline */}
+                        <p style={{
+                            fontSize: 'clamp(1rem,2.2vw,1.15rem)', color: 'var(--sub)', maxWidth: 620,
+                            margin: '0 auto 2.8rem', lineHeight: 1.75, fontWeight: 300,
+                            animation: 'fadeUp 0.8s ease 0.8s both', opacity: 0,
+                        }}>
+                            3+ years crafting enterprise-grade React applications.
+                            Building <span style={{ color: 'var(--cyan)' }}>HR &amp; Payroll</span> and{' '}
+                            <span style={{ color: 'var(--gold)' }}>Enterprise Pharma</span> systems at VMK IT Services.
+                        </p>
+
+                        {/* CTA buttons */}
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', animation: 'fadeUp 0.8s ease 1s both', opacity: 0 }}>
+                            <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} style={{
+                                padding: '14px 36px', borderRadius: '8px', border: 'none', cursor: 'pointer',
+                                background: 'linear-gradient(135deg,var(--gold),#d49200)',
+                                color: '#06111f', fontWeight: 700, fontSize: '0.95rem', fontFamily: 'var(--font-body)',
+                                letterSpacing: '0.04em', boxShadow: '0 6px 30px rgba(240,165,0,0.4)',
+                                transition: 'all 0.25s',
+                            }}
+                                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 10px 40px rgba(240,165,0,0.55)' }}
+                                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 6px 30px rgba(240,165,0,0.4)' }}
+                            >View My Work</button>
+
+                            <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} style={{
+                                padding: '14px 36px', borderRadius: '8px', cursor: 'pointer',
+                                background: 'transparent',
+                                border: '1px solid rgba(34,211,238,0.4)',
+                                color: 'var(--cyan)', fontWeight: 600, fontSize: '0.95rem', fontFamily: 'var(--font-body)',
+                                letterSpacing: '0.04em', transition: 'all 0.25s',
+                            }}
+                                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(34,211,238,0.08)'; e.currentTarget.style.borderColor = 'var(--cyan)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
+                                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(34,211,238,0.4)'; e.currentTarget.style.transform = '' }}
+                            >Get In Touch</button>
+                        </div>
+
+                        {/* Scroll hint */}
+                       
+                    </div>
+                </section>
+            );
+        }
+
+        /* ═══════════ SECTION WRAPPER ═══════════ */
+        function Section({ id, children, style = {} }) {
+            const [ref, visible] = useInView();
+            return (
+                <section id={id} ref={ref} style={{
+                    padding: 'clamp(4rem,10vw,7rem) clamp(1rem,6vw,4rem)',
+                    opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(50px)',
+                    transition: 'opacity 0.7s ease, transform 0.7s ease',
+                    ...style,
+                }}>
+                    {children}
+                </section>
+            );
+        }
+
+        /* ═══════════ SECTION HEADING ═══════════ */
+        function Heading({ number, title, sub }) {
+            return (
+                <div style={{ marginBottom: '3.5rem', textAlign: 'center' }}>
+                    <div style={{
+                        fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--gold)',
+                        letterSpacing: '0.18em', marginBottom: '0.8rem'
+                    }}>
+                        {number} ── {sub}
+                    </div>
+                    <h2 style={{
+                        fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,5vw,3.2rem)',
+                        fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1,
+                    }}>
+                        <span style={{
+                            background: 'linear-gradient(135deg,var(--text),var(--gold2))',
+                            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'
+                        }}>{title}</span>
+                    </h2>
+                    <div style={{
+                        width: 60, height: 3, background: 'linear-gradient(90deg,var(--gold),var(--cyan))',
+                        borderRadius: 99, margin: '1.2rem auto 0',
+                    }} />
+                </div>
+            );
+        }
+
+        /* ═══════════ ABOUT ═══════════ */
+        function About() {
+            return (
+                <Section id="about" style={{
+                    background: 'linear-gradient(180deg,var(--bg) 0%,var(--surface) 100%)',
+                    borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)',
+                }}>
+                    <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+                        <Heading number="01" title="About Me" sub="INTRODUCTION" />
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '3rem', alignItems: 'start' }}>
+                            {/* Avatar card */}
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+                                <div style={{ position: 'relative' }}>
+                                    <div style={{
+                                        width: 200, height: 200, borderRadius: '50%',
+                                        background: 'linear-gradient(135deg,rgba(240,165,0,0.12),rgba(34,211,238,0.08))',
+                                        border: '2px solid rgba(240,165,0,0.25)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        boxShadow: '0 0 60px rgba(240,165,0,0.12)',
+                                        animation: 'float 5s ease-in-out infinite',
+                                    }}>
+                                        <div style={{
+                                            fontFamily: 'var(--font-display)', fontSize: '5rem', fontWeight: 700,
+                                            background: 'linear-gradient(135deg,var(--gold),var(--cyan))',
+                                            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+                                        }}>GM</div>
+                                    </div>
+                                    {/* Orbit ring */}
+                                    <div style={{
+                                        position: 'absolute', inset: -16, borderRadius: '50%',
+                                        border: '1px dashed rgba(240,165,0,0.2)',
+                                        animation: 'rotateSlow 12s linear infinite',
+                                    }}>
+                                        <div style={{
+                                            position: 'absolute', top: -4, left: '50%', transform: 'translateX(-50%)',
+                                            width: 8, height: 8, borderRadius: '50%', background: 'var(--gold)',
+                                            boxShadow: '0 0 10px var(--gold)',
+                                        }} />
+                                    </div>
+                                </div>
+
+                                {/* Contact quick info */}
+                                {[
+                                    { icon: '📍', label: 'Hyderabad, Telangana' },
+                                    { icon: '📧', label: 'mohanguru733@gmail.com' },
+                                    { icon: '📱', label: '+91 91822 15100' },
+                                ].map(item => (
+                                    <div key={item.label} style={{
+                                        display: 'flex', alignItems: 'center', gap: '10px',
+                                        fontSize: '0.85rem', color: 'var(--sub)',
+                                    }}>
+                                        <span style={{ fontSize: '1rem' }}>{item.icon}</span>
+                                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem' }}>{item.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Bio text */}
+                            <div style={{ flex: 1 }}>
+                                <h3 style={{
+                                    fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 600,
+                                    color: 'var(--text)', marginBottom: '1.2rem', lineHeight: 1.2
+                                }}>
+                                    React.js Developer &amp; Full-Stack Engineer
+                                </h3>
+                                <p style={{ color: 'var(--sub)', lineHeight: 1.85, marginBottom: '1rem', fontSize: '0.95rem' }}>
+                                    Full-time Software Engineer at <span style={{ color: 'var(--gold)', fontWeight: 600 }}>VMK IT Services Pvt. Ltd.</span> since March 2023,
+                                    delivering enterprise-grade web applications with <strong style={{ color: 'var(--text)' }}>3+ years React.js</strong> and
+                                    <strong style={{ color: 'var(--text)' }}> 1.5 years Spring Boot</strong> experience.
+                                </p>
+                                <p style={{ color: 'var(--sub)', lineHeight: 1.85, marginBottom: '2rem', fontSize: '0.95rem' }}>
+                                    Built and shipped two production enterprise systems: an <span style={{ color: 'var(--cyan)' }}>HR &amp; Payroll Management System</span> (completed)
+                                    and an ongoing <span style={{ color: 'var(--gold)' }}>Enterprise Pharma Management System</span> — handling complex
+                                    multi-role workflows, JWT security, and real-time dashboards.
+                                </p>
+
+                                {/* Stats */}
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(130px,1fr))', gap: '1rem' }}>
+                                    {STATS.map((s, i) => (
+                                        <div key={s.label} style={{
+                                            background: 'rgba(240,165,0,0.04)',
+                                            border: '1px solid rgba(240,165,0,0.12)',
+                                            borderRadius: '12px', padding: '1.1rem', textAlign: 'center',
+                                            transition: 'all 0.3s', cursor: 'default',
+                                            animationDelay: `${i * 0.1}s`,
+                                        }}
+                                            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(240,165,0,0.08)'; e.currentTarget.style.borderColor = 'rgba(240,165,0,0.3)'; e.currentTarget.style.transform = 'translateY(-4px)' }}
+                                            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(240,165,0,0.04)'; e.currentTarget.style.borderColor = 'rgba(240,165,0,0.12)'; e.currentTarget.style.transform = '' }}
+                                        >
+                                            <div style={{ fontSize: '1.5rem', marginBottom: '4px' }}>{s.icon}</div>
+                                            <div style={{
+                                                fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700,
+                                                color: 'var(--gold)', lineHeight: 1
+                                            }}>{s.value}</div>
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginTop: '4px', letterSpacing: '0.04em' }}>{s.label}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+            );
+        }
+
+        /* ═══════════ SKILL BAR ═══════════ */
+        function SkillBar({ skill, visible, delay }) {
+            const [width, setWidth] = useState(0);
+            useEffect(() => {
+                if (visible) {
+                    const t = setTimeout(() => setWidth(skill.level), 300 + delay);
+                    return () => clearTimeout(t);
+                }
+            }, [visible, skill.level, delay]);
+            return (
+                <div style={{ marginBottom: '1.5rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text)' }}>{skill.name}</span>
+                            <span style={{
+                                fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: skill.color,
+                                background: `${skill.color}14`, border: `1px solid ${skill.color}30`,
+                                borderRadius: 4, padding: '1px 7px'
+                            }}>{skill.years}</span>
+                        </div>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: skill.color, fontWeight: 600 }}>{skill.level}%</span>
+                    </div>
+                    <div style={{ height: 6, background: 'rgba(255,255,255,0.05)', borderRadius: 99, overflow: 'hidden' }}>
+                        <div style={{
+                            height: '100%', borderRadius: 99,
+                            width: `${width}%`,
+                            background: `linear-gradient(90deg,${skill.color}99,${skill.color})`,
+                            boxShadow: `0 0 12px ${skill.color}50`,
+                            transition: 'width 1s cubic-bezier(0.4,0,0.2,1)',
+                        }} />
+                    </div>
+                </div>
+            );
+        }
+
+        /* ═══════════ SKILLS ═══════════ */
+        function Skills() {
+            const [ref, visible] = useInView(0.1);
+            return (
+                <section id="skills" ref={ref} style={{
+                    padding: 'clamp(4rem,10vw,7rem) clamp(1rem,6vw,4rem)',
+                    opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(50px)',
+                    transition: 'opacity 0.7s ease,transform 0.7s ease',
+                }}>
+                    <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+                        <Heading number="02" title="Skills & Expertise" sub="TECHNICAL STACK" />
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '3rem' }}>
+                            {/* Skill bars */}
+                            <div style={{
+                                background: 'linear-gradient(135deg,var(--card),rgba(15,29,51,0.8))',
+                                border: '1px solid var(--border)', borderRadius: 16, padding: '2rem',
+                            }}>
+                                <h3 style={{
+                                    fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 600,
+                                    color: 'var(--gold)', marginBottom: '1.8rem', letterSpacing: '0.02em'
+                                }}>Proficiency Levels</h3>
+                                {SKILLS.map((s, i) => (
+                                    <SkillBar key={s.name} skill={s} visible={visible} delay={i * 80} />
+                                ))}
+                            </div>
+
+                            {/* Tech badges */}
+                            <div>
+                                <div style={{
+                                    background: 'linear-gradient(135deg,var(--card),rgba(15,29,51,0.8))',
+                                    border: '1px solid var(--border)', borderRadius: 16, padding: '2rem', marginBottom: '1.5rem',
+                                }}>
+                                    <h3 style={{
+                                        fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 600,
+                                        color: 'var(--cyan)', marginBottom: '1.5rem'
+                                    }}>Tech Stack</h3>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                                        {TECH_BADGES.map((t, i) => (
+                                            <span key={t} style={{
+                                                padding: '5px 14px', borderRadius: '99px', fontSize: '0.78rem',
+                                                fontFamily: 'var(--font-mono)', fontWeight: 500, cursor: 'default',
+                                                background: i % 3 === 0 ? 'rgba(240,165,0,0.08)' : i % 3 === 1 ? 'rgba(34,211,238,0.08)' : 'rgba(91,114,153,0.12)',
+                                                border: i % 3 === 0 ? '1px solid rgba(240,165,0,0.2)' : i % 3 === 1 ? '1px solid rgba(34,211,238,0.2)' : '1px solid rgba(91,114,153,0.2)',
+                                                color: i % 3 === 0 ? 'var(--gold)' : i % 3 === 1 ? 'var(--cyan)' : 'var(--sub)',
+                                                transition: 'all 0.2s',
+                                            }}
+                                                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)' }}
+                                                onMouseLeave={e => { e.currentTarget.style.transform = '' }}
+                                            >{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Focus areas */}
+                                {[
+                                    { title: 'Frontend', icon: '⚛️', items: ['React.js Component Architecture', 'MUI Custom Theming', 'Performance Optimization', 'Responsive / Adaptive UI'], color: 'var(--cyan)' },
+                                    { title: 'Backend', icon: '⚙️', items: ['Spring Boot REST APIs', 'JWT Security & RBAC', 'JPA Entity Design', 'MySQL Optimization'], color: 'var(--gold)' },
+                                ].map(area => (
+                                    <div key={area.title} style={{
+                                        background: 'linear-gradient(135deg,var(--card),rgba(15,29,51,0.7))',
+                                        border: `1px solid ${area.color}20`, borderRadius: 12,
+                                        padding: '1.3rem', marginBottom: '1rem',
+                                        transition: 'border-color 0.3s,transform 0.2s',
+                                    }}
+                                        onMouseEnter={e => { e.currentTarget.style.borderColor = `${area.color}50`; e.currentTarget.style.transform = 'translateY(-3px)' }}
+                                        onMouseLeave={e => { e.currentTarget.style.borderColor = `${area.color}20`; e.currentTarget.style.transform = '' }}
+                                    >
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                                            <span>{area.icon}</span>
+                                            <span style={{ fontWeight: 600, fontSize: '0.9rem', color: area.color }}>{area.title}</span>
+                                        </div>
+                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px' }}>
+                                            {area.items.map(item => (
+                                                <div key={item} style={{ fontSize: '0.78rem', color: 'var(--sub)', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                                    <span style={{ color: area.color, fontSize: '0.65rem' }}>▸</span>{item}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ═══════════ EXPERIENCE ═══════════ */
+        function Experience() {
+            return (
+                <Section id="experience" style={{ background: 'linear-gradient(180deg,var(--bg) 0%,var(--surface) 100%)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+                    <div style={{ maxWidth: 900, margin: '0 auto' }}>
+                        <Heading number="03" title="Experience" sub="CAREER JOURNEY" />
+
+                        <div style={{ position: 'relative' }}>
+                            {/* Timeline line */}
+                            <div style={{
+                                position: 'absolute', left: 0, top: 0, bottom: 0, width: 2,
+                                background: 'linear-gradient(180deg,var(--gold),var(--cyan),transparent)',
+                                borderRadius: 99,
+                            }} />
+
+                            <div style={{ paddingLeft: '2.5rem' }}>
+                                {/* Current Role */}
+                                <div style={{
+                                    position: 'relative',
+                                    background: 'linear-gradient(135deg,var(--card),rgba(15,29,51,0.7))',
+                                    border: '1px solid rgba(240,165,0,0.2)', borderRadius: 16,
+                                    padding: '2rem', marginBottom: '2.5rem',
+                                    boxShadow: '0 4px 40px rgba(240,165,0,0.05)',
+                                    transition: 'all 0.3s',
+                                }}
+                                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(240,165,0,0.4)'; e.currentTarget.style.transform = 'translateX(8px)' }}
+                                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(240,165,0,0.2)'; e.currentTarget.style.transform = '' }}
+                                >
+                                    {/* Dot */}
+                                    <div style={{
+                                        position: 'absolute', left: -42, top: 28,
+                                        width: 14, height: 14, borderRadius: '50%',
+                                        background: 'var(--gold)',
+                                        boxShadow: '0 0 0 4px rgba(240,165,0,0.15)',
+                                        border: '2px solid var(--surface)',
+                                    }} />
+                                    {/* Active badge */}
+                                    <div style={{
+                                        position: 'absolute', top: '1.2rem', right: '1.2rem',
+                                        display: 'flex', alignItems: 'center', gap: '6px',
+                                        background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.25)',
+                                        borderRadius: '99px', padding: '3px 12px',
+                                    }}>
+                                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--cyan)', animation: 'pulse 2s infinite' }} />
+                                        <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--cyan)', letterSpacing: '0.08em' }}>ACTIVE</span>
+                                    </div>
+
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'flex-start', marginBottom: '0.5rem', paddingRight: '100px' }}>
+                                        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--text)' }}>
+                                            Software Engineer — React.js / Full Stack
+                                        </h3>
+                                    </div>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
+                                        <span style={{ color: 'var(--gold)', fontWeight: 600, fontSize: '0.9rem' }}>VMK IT Services Pvt. Ltd.</span>
+                                        <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>•</span>
+                                        <span style={{ color: 'var(--sub)', fontSize: '0.82rem', fontFamily: 'var(--font-mono)' }}>Hyderabad, Telangana</span>
+                                        <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>•</span>
+                                        <span style={{ color: 'var(--sub)', fontSize: '0.82rem', fontFamily: 'var(--font-mono)' }}>March 2023 – Present (3 Years)</span>
+                                    </div>
+
+                                    {/* Competencies */}
+                                    {[
+                                        {
+                                            label: 'React.js Frontend (3+ yrs)', color: 'var(--cyan)', points: [
+                                                'Built enterprise UIs with React.js + MUI for HR & Payroll and Pharma systems',
+                                                'Dynamic data grids, multi-step approval workflows, real-time status dashboards',
+                                                'API integration, JWT auth flows, session management & role-specific navigation',
+                                                'Managed component lifecycle & performance across 6 user roles',
+                                            ]
+                                        },
+                                        {
+                                            label: 'Java Backend (1.5 yrs)', color: 'var(--gold)', points: [
+                                                'Spring Boot CRUD for Employee, Attendance, Payroll, Leave, Inventory entities',
+                                                'JWT authentication & RBAC with Spring Security across 4 user roles',
+                                                'MySQL schema design with JPA/Hibernate normalization & query optimization',
+                                                'Automated payslip generation with integrated email notification system',
+                                            ]
+                                        },
+                                        {
+                                            label: 'Delivery & Collaboration', color: '#9CA3AF', points: [
+                                                'Delivered HR & Payroll System end-to-end in year 1 → promoted to Pharma project',
+                                                'Agile/Scrum sprints, GitLab CI/CD, peer code reviews & production bug fixes',
+                                                'Direct client communication for requirements, UAT & post-deployment support',
+                                            ]
+                                        },
+                                    ].map(section => (
+                                        <div key={section.label} style={{ marginBottom: '1.2rem' }}>
+                                            <div style={{
+                                                fontSize: '0.8rem', fontWeight: 600, color: section.color,
+                                                fontFamily: 'var(--font-mono)', letterSpacing: '0.05em', marginBottom: '8px',
+                                                display: 'flex', alignItems: 'center', gap: '8px',
+                                            }}>
+                                                <span style={{ width: 16, height: 1, background: section.color, display: 'inline-block' }} />
+                                                {section.label}
+                                            </div>
+                                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                                {section.points.map(pt => (
+                                                    <li key={pt} style={{
+                                                        fontSize: '0.88rem', color: 'var(--sub)', lineHeight: 1.6,
+                                                        paddingLeft: '14px', marginBottom: '4px', position: 'relative',
+                                                    }}>
+                                                        <span style={{ position: 'absolute', left: 0, color: section.color, fontWeight: 600 }}>›</span>
+                                                        {pt}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+            );
+        }
+
+        /* ═══════════ PROJECTS ═══════════ */
+        function Projects() {
+            return (
+                <Section id="projects">
+                    <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+                        <Heading number="04" title="Project Portfolio" sub="PRODUCTION SYSTEMS" />
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: '2rem' }}>
+                            {PROJECTS.map((proj, pi) => (
+                                <div key={proj.id} style={{
+                                    background: 'linear-gradient(145deg,var(--card),rgba(11,20,36,0.9))',
+                                    border: `1px solid ${proj.tagColor}20`, borderRadius: 18,
+                                    padding: '2rem', display: 'flex', flexDirection: 'column',
+                                    transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)', cursor: 'default',
+                                    position: 'relative', overflow: 'hidden',
+                                    animationDelay: `${pi * 0.15}s`,
+                                }}
+                                    onMouseEnter={e => {
+                                        e.currentTarget.style.borderColor = `${proj.tagColor}45`;
+                                        e.currentTarget.style.transform = 'translateY(-8px)';
+                                        e.currentTarget.style.boxShadow = `0 24px 60px ${proj.tagColor}12`;
+                                    }}
+                                    onMouseLeave={e => {
+                                        e.currentTarget.style.borderColor = `${proj.tagColor}20`;
+                                        e.currentTarget.style.transform = '';
+                                        e.currentTarget.style.boxShadow = '';
+                                    }}
+                                >
+                                    {/* Glow top */}
+                                    <div style={{
+                                        position: 'absolute', top: 0, left: 0, right: 0, height: 2,
+                                        background: `linear-gradient(90deg,transparent,${proj.tagColor},transparent)`,
+                                        opacity: 0.6,
+                                    }} />
+
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.2rem' }}>
+                                        <div style={{ fontSize: '2.5rem' }}>{proj.icon}</div>
+                                        <span style={{
+                                            fontSize: '0.7rem', fontFamily: 'var(--font-mono)', fontWeight: 600,
+                                            letterSpacing: '0.1em',
+                                            color: proj.tagColor,
+                                            background: `${proj.tagColor}10`,
+                                            border: `1px solid ${proj.tagColor}30`,
+                                            borderRadius: '99px', padding: '4px 12px',
+                                        }}>{proj.tag}</span>
+                                    </div>
+
+                                    <h3 style={{
+                                        fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 700,
+                                        color: 'var(--text)', lineHeight: 1.3, marginBottom: '0.4rem'
+                                    }}>{proj.name}</h3>
+
+                                    <div style={{
+                                        fontSize: '0.75rem', color: 'var(--muted)', fontFamily: 'var(--font-mono)',
+                                        marginBottom: '1.2rem'
+                                    }}>{proj.period}</div>
+
+                                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', flex: 1 }}>
+                                        {proj.points.map(pt => (
+                                            <li key={pt} style={{
+                                                fontSize: '0.85rem', color: 'var(--sub)', lineHeight: 1.6,
+                                                display: 'flex', gap: '8px', marginBottom: '6px',
+                                            }}>
+                                                <span style={{ color: proj.tagColor, flexShrink: 0, marginTop: '2px' }}>▸</span>
+                                                <span>{pt}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* Stack badges */}
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                        {proj.stack.map(t => (
+                                            <span key={t} style={{
+                                                fontSize: '0.72rem', fontFamily: 'var(--font-mono)',
+                                                padding: '3px 10px', borderRadius: '4px',
+                                                background: 'rgba(255,255,255,0.04)',
+                                                border: '1px solid rgba(255,255,255,0.08)',
+                                                color: 'var(--sub)',
+                                            }}>{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+            );
+        }
+
+        /* ═══════════ EDUCATION ═══════════ */
+        function Education() {
+            return (
+                <Section id="education" style={{ background: 'linear-gradient(180deg,var(--bg) 0%,var(--surface) 100%)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+                    <div style={{ maxWidth: 700, margin: '0 auto' }}>
+                        <Heading number="05" title="Education" sub="ACADEMIC BACKGROUND" />
+                        <div style={{
+                            background: 'linear-gradient(135deg,var(--card),rgba(15,29,51,0.6))',
+                            border: '1px solid rgba(34,211,238,0.2)', borderRadius: 18,
+                            padding: '2.5rem', display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap',
+                            transition: 'all 0.3s', boxShadow: '0 4px 40px rgba(34,211,238,0.04)',
+                        }}
+                            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,211,238,0.4)'; e.currentTarget.style.transform = 'translateY(-6px)' }}
+                            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(34,211,238,0.2)'; e.currentTarget.style.transform = '' }}
+                        >
+                            <div style={{
+                                width: 64, height: 64, borderRadius: 14, flexShrink: 0,
+                                background: 'linear-gradient(135deg,rgba(34,211,238,0.15),rgba(34,211,238,0.05))',
+                                border: '1px solid rgba(34,211,238,0.3)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                fontSize: '2rem',
+                            }}>🎓</div>
+                            <div style={{ flex: 1, minWidth: 220 }}>
+                                <h3 style={{
+                                    fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 700,
+                                    color: 'var(--text)', marginBottom: '0.4rem'
+                                }}>
+                                    B.Tech – Electronics &amp; Communication Engineering
+                                </h3>
+                                <div style={{ color: 'var(--cyan)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.3rem' }}>
+                                    JNTU Anantapur University, Andhra Pradesh
+                                </div>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--muted)', marginBottom: '1.2rem' }}>
+                                    2017 – 2021
+                                </div>
+                                <p style={{ fontSize: '0.88rem', color: 'var(--sub)', lineHeight: 1.7 }}>
+                                    Electronics &amp; Communication foundation provided strong analytical and systems-thinking skills,
+                                    enabling confident transition into full-stack software engineering and enterprise application development.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+            );
+        }
+
+        /* ═══════════ CONTACT ═══════════ */
+        function Contact() {
+            const [form, setForm] = useState({ name: '', email: '', message: '' });
+            const [sent, setSent] = useState(false);
+            const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+            const handleSubmit = e => {
+                e.preventDefault();
+                setSent(true);
+                setTimeout(() => setSent(false), 4000);
+                setForm({ name: '', email: '', message: '' });
+            };
+            const inputStyle = {
+                width: '100%', padding: '12px 16px', borderRadius: 8,
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(91,114,153,0.25)',
+                color: 'var(--text)', fontSize: '0.9rem', fontFamily: 'var(--font-body)',
+                outline: 'none', transition: 'border-color 0.2s,background 0.2s',
+            };
+            const labelStyle = {
+                display: 'block', fontSize: '0.78rem', fontFamily: 'var(--font-mono)',
+                color: 'var(--sub)', letterSpacing: '0.08em', marginBottom: '8px',
+            };
+
+            return (
+                <Section id="contact" style={{ borderTop: '1px solid var(--border)' }}>
+                    <div style={{ maxWidth: 900, margin: '0 auto' }}>
+                        <Heading number="06" title="Get In Touch" sub="CONTACT" />
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '3rem', alignItems: 'start' }}>
+                            {/* Left info */}
+                            <div>
+                                <h3 style={{
+                                    fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 600,
+                                    color: 'var(--text)', marginBottom: '1rem', lineHeight: 1.3
+                                }}>
+                                    Open to New<br /><span style={{ color: 'var(--gold)' }}>Opportunities</span>
+                                </h3>
+                                <p style={{ color: 'var(--sub)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.9rem' }}>
+                                    React.js developer with 3+ years enterprise experience. Available for full-time roles,
+                                    contract projects, and collaborations in the MERN/Java stack space.
+                                </p>
+
+                                {[
+                                    { icon: '📧', label: 'Email', value: 'mohanguru733@gmail.com', color: 'var(--gold)' },
+                                    { icon: '📱', label: 'Phone', value: '+91 91822 15100', color: 'var(--cyan)' },
+                                    { icon: '📍', label: 'Location', value: 'Hyderabad, Telangana', color: 'var(--gold)' },
+                                ].map(c => (
+                                    <div key={c.label} style={{
+                                        display: 'flex', alignItems: 'center', gap: '12px',
+                                        padding: '12px 16px', marginBottom: '10px',
+                                        background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)',
+                                        borderRadius: 10, transition: 'all 0.25s', cursor: 'default',
+                                    }}
+                                        onMouseEnter={e => { e.currentTarget.style.borderColor = c.color + '40'; e.currentTarget.style.transform = 'translateX(6px)' }}
+                                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = '' }}
+                                    >
+                                        <span style={{ fontSize: '1.2rem' }}>{c.icon}</span>
+                                        <div>
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--muted)', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>{c.label}</div>
+                                            <div style={{ fontSize: '0.88rem', color: c.color, fontWeight: 500 }}>{c.value}</div>
+                                        </div>
+                                    </div>
+                                ))}
+
+                                {/* Core competencies */}
+                                <div style={{ marginTop: '1.5rem' }}>
+                                    <div style={{
+                                        fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--muted)',
+                                        letterSpacing: '0.1em', marginBottom: '10px'
+                                    }}>CORE STRENGTHS</div>
+                                    {['React.js · MUI · REST APIs', 'Spring Boot · JWT · MySQL', 'Agile · GitLab CI/CD', 'RBAC · Enterprise Workflows'].map(s => (
+                                        <div key={s} style={{
+                                            display: 'flex', alignItems: 'center', gap: '8px',
+                                            fontSize: '0.82rem', color: 'var(--sub)', marginBottom: '6px',
+                                        }}>
+                                            <span style={{ color: 'var(--gold)', fontSize: '0.65rem' }}>◆</span>{s}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Form */}
+                            <div style={{
+                                background: 'linear-gradient(135deg,var(--card),rgba(15,29,51,0.7))',
+                                border: '1px solid var(--border)', borderRadius: 18, padding: '2rem',
+                            }}>
+                                {sent ? (
+                                    <div style={{
+                                        textAlign: 'center', padding: '3rem 1rem',
+                                        animation: 'scalePop 0.4s ease forwards',
+                                    }}>
+                                        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
+                                        <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>
+                                            Message Sent!
+                                        </h4>
+                                        <p style={{ color: 'var(--sub)', fontSize: '0.9rem' }}>Thanks for reaching out. I'll respond within 24 hours.</p>
+                                    </div>
+                                ) : (
+                                    <form onSubmit={handleSubmit} autoComplete="off">
+                                        <h4 style={{
+                                            fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 600,
+                                            color: 'var(--text)', marginBottom: '1.5rem'
+                                        }}>Send a Message</h4>
+
+                                        <div style={{ marginBottom: '1.2rem' }}>
+                                            <label style={labelStyle}>YOUR NAME</label>
+                                            <input name="name" value={form.name} onChange={handleChange} required
+                                                placeholder="John Doe" style={inputStyle}
+                                                onFocus={e => { e.target.style.borderColor = 'var(--gold)'; e.target.style.background = 'rgba(240,165,0,0.04)' }}
+                                                onBlur={e => { e.target.style.borderColor = 'rgba(91,114,153,0.25)'; e.target.style.background = 'rgba(255,255,255,0.04)' }}
+                                            />
+                                        </div>
+                                        <div style={{ marginBottom: '1.2rem' }}>
+                                            <label style={labelStyle}>EMAIL ADDRESS</label>
+                                            <input name="email" type="email" value={form.email} onChange={handleChange} required
+                                                placeholder="john@example.com" style={inputStyle}
+                                                onFocus={e => { e.target.style.borderColor = 'var(--cyan)'; e.target.style.background = 'rgba(34,211,238,0.04)' }}
+                                                onBlur={e => { e.target.style.borderColor = 'rgba(91,114,153,0.25)'; e.target.style.background = 'rgba(255,255,255,0.04)' }}
+                                            />
+                                        </div>
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={labelStyle}>MESSAGE</label>
+                                            <textarea name="message" value={form.message} onChange={handleChange} required
+                                                placeholder="I'd like to discuss an opportunity..." rows={5}
+                                                style={{ ...inputStyle, resize: 'vertical', minHeight: 120 }}
+                                                onFocus={e => { e.target.style.borderColor = 'var(--gold)'; e.target.style.background = 'rgba(240,165,0,0.04)' }}
+                                                onBlur={e => { e.target.style.borderColor = 'rgba(91,114,153,0.25)'; e.target.style.background = 'rgba(255,255,255,0.04)' }}
+                                            />
+                                        </div>
+                                        <button type="submit" style={{
+                                            width: '100%', padding: '14px', borderRadius: 8, border: 'none', cursor: 'pointer',
+                                            background: 'linear-gradient(135deg,var(--gold),#d49200)',
+                                            color: '#06111f', fontWeight: 700, fontSize: '0.95rem', fontFamily: 'var(--font-body)',
+                                            letterSpacing: '0.04em', boxShadow: '0 6px 24px rgba(240,165,0,0.35)',
+                                            transition: 'all 0.25s',
+                                        }}
+                                            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 36px rgba(240,165,0,0.5)' }}
+                                            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 6px 24px rgba(240,165,0,0.35)' }}
+                                        >Send Message →</button>
+                                    </form>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+            );
+        }
+
+        /* ═══════════ FOOTER ═══════════ */
+        function Footer() {
+            return (
+                <footer style={{
+                    borderTop: '1px solid var(--border)',
+                    padding: '2rem clamp(1rem,6vw,4rem)',
+                    background: 'var(--surface)',
+                    display: 'flex', flexWrap: 'wrap', gap: '1rem',
+                    justifyContent: 'space-between', alignItems: 'center',
+                }}>
+                    <div>
+                        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.1rem', color: 'var(--text)', marginBottom: '2px' }}>
+                            Guru Mohan Thetaneela
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--muted)', fontFamily: 'var(--font-mono)' }}>
+                            React.js Developer · Full Stack Engineer
+                        </div>
+                    </div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--muted)', textAlign: 'center' }}>
+                        Built with <span style={{ color: 'var(--gold)' }}>React.js</span> &amp; crafted with{' '}
+                        <span style={{ color: '#ef4444' }}>♥</span>
+                    </div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--muted)', fontFamily: 'var(--font-mono)' }}>
+                        Hyderabad · 2025
+                    </div>
+                </footer>
+            );
+        }
+
+        /* ═══════════ APP ═══════════ */
+        function App() {
+            return (
+                <div>
+                    <Navbar />
+                    <Hero />
+                    <About />
+                    <Skills />
+                    <Experience />
+                    <Projects />
+                    <Education />
+                    <Contact />
+                    <Footer />
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>
