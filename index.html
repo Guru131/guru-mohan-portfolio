@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Guru Mohan | React.js & Full Stack Developer — Portfolio</title>
-    <!-- ✅ FAVICON — GM gold circle icon in browser tab -->
+    
     <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
   <circle cx='50' cy='50' r='48' fill='%23060C18' stroke='%23F0A500' stroke-width='4'/>
@@ -1325,6 +1325,1488 @@
         }
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guru Mohan | React Developer</title>
+    <link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <circle cx='50' cy='50' r='48' fill='%23060C18' stroke='%23F0A500' stroke-width='4'/>
+  <text x='50' y='58'
+        text-anchor='middle'
+        dominant-baseline='middle'
+        font-size='48'
+        font-family='Georgia, serif'
+        font-weight='bold'
+        fill='%23F0A500'>GM</text>
+</svg>" type="image/svg+xml">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@mui/material@5/umd/material-ui.development.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: #060D1A;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #060D1A
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00D4FF, #7C3AED);
+            border-radius: 2px
+        }
+
+        /* Keyframes */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        @keyframes fadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-18px)
+            }
+        }
+
+        @keyframes floatSlow {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes spinSlowR {
+            from {
+                transform: rotate(360deg)
+            }
+
+            to {
+                transform: rotate(0deg)
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 8px var(--dot-color)
+            }
+
+            50% {
+                transform: scale(1.3);
+                box-shadow: 0 0 20px var(--dot-color)
+            }
+        }
+
+        @keyframes particleRise {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0
+            }
+
+            10% {
+                opacity: .7
+            }
+
+            90% {
+                opacity: .7
+            }
+
+            100% {
+                transform: translateY(-50px) scale(1.2);
+                opacity: 0
+            }
+        }
+
+        @keyframes gradShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+        }
+
+        @keyframes borderPulse {
+
+            0%,
+            100% {
+                opacity: .3
+            }
+
+            50% {
+                opacity: .8
+            }
+        }
+
+        @keyframes countAnim {
+            from {
+                transform: scale(0.5);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        @keyframes skillFill {
+            from {
+                width: 0
+            }
+
+            to {
+                width: var(--w)
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0
+            }
+
+            100% {
+                background-position: 200% 0
+            }
+        }
+
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            20% {
+                transform: rotate(-25deg)
+            }
+
+            40% {
+                transform: rotate(25deg)
+            }
+
+            60% {
+                transform: rotate(-15deg)
+            }
+
+            80% {
+                transform: rotate(10deg)
+            }
+
+            100% {
+                transform: rotate(0deg)
+            }
+        }
+
+        /* Scroll reveal classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity .7s ease, transform .7s ease
+        }
+
+        .reveal.vis {
+            opacity: 1;
+            transform: none
+        }
+
+        .reveal-l {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity .7s ease, transform .7s ease
+        }
+
+        .reveal-l.vis {
+            opacity: 1;
+            transform: none
+        }
+
+        .reveal-r {
+            opacity: 0;
+            transform: translateX(35px);
+            transition: opacity .7s ease, transform .7s ease
+        }
+
+        .reveal-r.vis {
+            opacity: 1;
+            transform: none
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .reveal-scale.vis {
+            opacity: 1;
+            transform: scale(1)
+        }
+
+        /* Utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07)
+        }
+
+        .card-hover {
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+            cursor: pointer
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px)
+        }
+
+        .grad-text {
+            background: linear-gradient(135deg, #00D4FF 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace
+        }
+
+        /* Navbar links */
+        .nav-a {
+            position: relative;
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 4px 0;
+            transition: color .3s
+        }
+
+        .nav-a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00D4FF, #7C3AED);
+            transition: width .3s;
+            border-radius: 1px
+        }
+
+        .nav-a:hover,
+        .nav-a.active {
+            color: #00D4FF
+        }
+
+        .nav-a:hover::after {
+            width: 100%
+        }
+
+        /* Typed cursor */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #00D4FF;
+            margin-left: 3px;
+            animation: blink .7s step-end infinite;
+            vertical-align: middle;
+            border-radius: 1px
+        }
+
+        /* Skill bar */
+        .sb-wrap {
+            height: 5px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden
+        }
+
+        .sb-fill {
+            height: 100%;
+            border-radius: 3px;
+            width: 0;
+            background: linear-gradient(90deg, #00D4FF, #7C3AED);
+            transition: width 1.4s ease
+        }
+
+        /* Timeline */
+        .tl-line {
+            position: absolute;
+            left: 18px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00D4FF, #7C3AED, #10B981)
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid #060D1A;
+            animation: pulse 2s ease-in-out infinite;
+            --dot-color: #00D4FF
+        }
+
+        /* Particle */
+        .ptcl {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleRise linear infinite
+        }
+
+        /* Scroll progress */
+        #sp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00D4FF, #7C3AED);
+            z-index: 9999;
+            transition: width .1s linear
+        }
+
+        /* Project card */
+        .proj-card {
+            border-radius: 20px;
+            padding: 28px;
+            transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+            cursor: pointer;
+            background: rgba(13, 22, 38, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.07)
+        }
+
+        .proj-card:hover {
+            transform: translateY(-10px)
+        }
+
+        /* Dialog override */
+        .MuiDialog-paper {
+            border-radius: 16px !important
+        }
+
+        .MuiBackdrop-root {
+            backdrop-filter: blur(6px)
+        }
+
+        /* Chip */
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 3px;
+            border: 1px solid;
+            transition: transform .2s;
+            cursor: default
+        }
+
+        .chip:hover {
+            transform: translateY(-2px) scale(1.04)
+        }
+
+        /* Skill category tab */
+        .s-tab {
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid rgba(0, 212, 255, .3);
+            color: #94A3B8;
+            background: transparent;
+            transition: all .3s;
+            font-family: 'Inter', sans-serif
+        }
+
+        .s-tab.act {
+            background: linear-gradient(135deg, #00D4FF, #7C3AED);
+            color: #fff;
+            border-color: transparent
+        }
+
+        .s-tab:hover:not(.act) {
+            border-color: #00D4FF;
+            color: #00D4FF
+        }
+
+        /* Contact input */
+        .cinput {
+            width: 100%;
+            padding: 11px 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #E2E8F0;
+            font-size: 14px;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            transition: border-color .25s;
+            resize: vertical
+        }
+
+        .cinput:focus {
+            border-color: #00D4FF
+        }
+
+        .cinput::placeholder {
+            color: #475569
+        }
+
+        /* Hero grid bg */
+        .grid-bg {
+            background-image: linear-gradient(rgba(0, 212, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, .025) 1px, transparent 1px);
+            background-size: 55px 55px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sp"></div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const {
+            Box, Container, Grid, Typography, Button, Chip,
+            Dialog, DialogContent, DialogTitle, IconButton, Divider,
+            createTheme, ThemeProvider, CssBaseline, Paper
+        } = MaterialUI;
+
+        /* ─────────────────────── DATA ─────────────────────── */
+        const ME = {
+            name: "Guru Mohan Thetaneela",
+            short: "Guru Mohan",
+            roles: ["React.js Developer", "Full Stack Engineer", "UI/UX Developer", "Spring Boot Dev"],
+            email: "mohanguru733@gmail.com",
+            phone: "+91 91822 15100",
+            location: "Hyderabad, Telangana",
+            company: "VMK IT Services Pvt. Ltd.",
+            summary: "React.js Developer with 3+ years of full-time experience building enterprise-grade, responsive web applications. Proficient in REST API integration, JWT authentication, Spring Security, RBAC, Material-UI, and MySQL.",
+        };
+
+        const STATS = [
+            { val: "3+", label: "Years Experience", icon: "🚀" },
+            { val: "2", label: "Enterprise Projects", icon: "💼" },
+            { val: "10+", label: "Modules Delivered", icon: "📦" },
+            { val: "4", label: "User Roles Built", icon: "🔐" },
+        ];
+
+        const SKILLS = {
+            Frontend: [
+                { n: "React.js", v: 92 }, { n: "Material-UI (MUI)", v: 90 }, { n: "JavaScript / ES6+", v: 88 },
+                { n: "HTML5 / CSS3", v: 87 }, { n: "React Router", v: 83 }, { n: "REST API Integration", v: 85 },
+            ],
+            Backend: [
+                { n: "Java / Spring Boot", v: 76 }, { n: "Spring Security + JWT", v: 74 }, { n: "REST API Design", v: 78 },
+                { n: "Spring Data JPA", v: 72 }, { n: "Hibernate ORM", v: 70 }, { n: "Spring MVC", v: 70 },
+            ],
+            Database: [
+                { n: "MySQL", v: 82 }, { n: "Schema Design", v: 78 }, { n: "Query Optimization", v: 72 },
+                { n: "JPA / Hibernate", v: 74 }, { n: "Normalization", v: 76 }, { n: "Entity Relations", v: 75 },
+            ],
+            DevOps: [
+                { n: "Git / GitLab CI-CD", v: 82 }, { n: "Postman", v: 88 }, { n: "Swagger", v: 79 },
+                { n: "Apache Tomcat", v: 71 }, { n: "VS Code", v: 92 }, { n: "Agile / Scrum", v: 84 },
+            ],
+        };
+
+        const ALL_TECH = [
+            { n: "React.js", c: "#61DAFB" }, { n: "JavaScript", c: "#F7DF1E" }, { n: "Java", c: "#ED8B00" },
+            { n: "Spring Boot", c: "#6DB33F" }, { n: "MySQL", c: "#4479A1" }, { n: "MUI", c: "#007FFF" },
+            { n: "JWT", c: "#FB015B" }, { n: "REST API", c: "#00D4AA" }, { n: "Git", c: "#F05032" },
+            { n: "Postman", c: "#FF6C37" }, { n: "HTML5", c: "#E34F26" }, { n: "CSS3", c: "#1572B6" },
+            { n: "Hibernate", c: "#59666C" }, { n: "GitLab", c: "#FC6D26" }, { n: "Swagger", c: "#85EA2D" },
+            { n: "Agile", c: "#7C3AED" }, { n: "JPA", c: "#007396" }, { n: "Tomcat", c: "#F8DC75" },
+        ];
+
+        const EXPERIENCE = [{
+            role: "Software Engineer — React.js / Full Stack Developer",
+            company: "VMK IT Services Pvt. Ltd.",
+            location: "Hyderabad, Telangana",
+            period: "March 2023 – Present",
+            type: "Full-Time · 3 Years",
+            color: "#00D4FF",
+            icon: "💻",
+            points: [
+                "Developed enterprise-grade, fully responsive UIs using React.js and Material-UI for HR & Payroll and Enterprise Pharma Management Systems.",
+                "Built complex UI components: dynamic data grids, multi-step approval workflow forms, real-time dashboards, role-specific navigation menus.",
+                "Integrated React.js frontend with Spring Boot REST APIs — JWT auth, session management, live data rendering across all modules.",
+                "Developed Java backend with Spring Boot — full CRUD for Employee, Attendance, Payroll, Leave, Inventory, Procurement, Batch entities.",
+                "Designed MySQL schemas; managed relational entities using Spring Data JPA and Hibernate with normalization and query optimization.",
+                "Participated in Agile/Scrum sprints — GitLab CI/CD pipelines, peer code reviews, production issue resolution, on-time sprint releases.",
+                "Handled direct client communication for requirement analysis, UAT sessions, and post-deployment support.",
+            ],
+        }];
+
+        const EDUCATION = {
+            degree: "B.Tech — Electronics & Communication Engineering (ECE)",
+            university: "JNTU Anantapur University, Andhra Pradesh",
+            period: "2017 – 2021",
+            color: "#10B981",
+        };
+
+        const PROJECTS = [
+            {
+                title: "Enterprise Pharma Management System",
+                period: "March 2024 – Present",
+                duration: "2 Years",
+                status: "Production",
+                statusColor: "#10B981",
+                icon: "💊",
+                color: "#7C3AED",
+                tech: ["React.js", "Material-UI", "Spring Boot", "Spring Security", "JWT", "MySQL", "GitLab"],
+                short: "Large-scale pharmaceutical ERP — inventory, procurement, batch tracking, expiry alerts, manufacturing workflows and compliance dashboards.",
+                description: "Large-scale enterprise system for pharmaceutical operations: inventory management, procurement, batch tracking, expiry alerts, manufacturing workflows, regulatory compliance, and analytics dashboards with multi-role access control.",
+                highlights: [
+                    "Led entire frontend development using React.js and MUI — built all enterprise UI modules including dashboards, data grids, multi-step approval workflows",
+                    "Secured REST APIs using Spring Boot with JWT & RBAC across 4 user roles: Admin, Approver, Reviewer, and User",
+                    "Designed MySQL schemas using Spring Data JPA & Hibernate for pharmaceutical inventory, procurement, and compliance data",
+                    "Managed Agile sprints, GitLab CI/CD pipelines; conducted peer reviews and coordinated directly with clients for UAT and production releases",
+                    "Implemented complex module: Calibration Management, Instrument tracking, GMP compliance workflows",
+                ],
+            },
+            {
+                title: "HR & Payroll Management System",
+                period: "March 2023 – March 2024",
+                duration: "1 Year",
+                status: "Completed",
+                statusColor: "#00D4FF",
+                icon: "👥",
+                color: "#00D4FF",
+                tech: ["React.js", "Material-UI", "Spring Boot", "JWT", "MySQL", "REST APIs"],
+                short: "Complete HR and Payroll automation for employee records, salary computation, attendance tracking, leave management and payslip generation.",
+                description: "Complete HR and Payroll automation system for employee records, salary computation, attendance tracking, leave management, and payslip generation with role-based access for Admin, HR, and Employee.",
+                highlights: [
+                    "Built all responsive HR workflow screens using React.js and MUI — employee listings, attendance views, payroll dashboards, leave management interfaces",
+                    "Developed Java backend CRUD operations for Employee, Attendance, Payroll, and Leave entities using Spring Boot, Spring Data JPA, MySQL",
+                    "Implemented Spring Security with JWT for secure role-based access across Admin, HR, and Employee roles",
+                    "Engineered automated payroll calculation logic with payslip generation and integrated email notification system",
+                    "Delivered end-to-end within 1 year — successful delivery led to full-time promotion and assignment to the larger Pharma project",
+                ],
+            },
+        ];
+
+        /* ─────────────────────── THEME ─────────────────────── */
+        const theme = createTheme({
+            palette: {
+                mode: 'dark',
+                primary: { main: '#00D4FF' },
+                secondary: { main: '#7C3AED' },
+                background: { default: '#060D1A', paper: '#0D1B2E' },
+                text: { primary: '#E2E8F0', secondary: '#94A3B8' },
+            },
+            typography: { fontFamily: "'Inter',sans-serif" },
+            components: {
+                MuiButton: { styleOverrides: { root: { textTransform: 'none', borderRadius: 8, fontWeight: 600 } } },
+                MuiDialog: { styleOverrides: { paper: { background: '#0D1B2E', border: '1px solid rgba(0,212,255,0.15)' } } },
+            },
+        });
+
+        /* ─────────────────────── PARTICLES ─────────────────────── */
+        function Particles() {
+            const pts = React.useMemo(() => Array.from({ length: 25 }, ((_, i) => ({
+                id: i, size: Math.random() * 3 + 2, left: Math.random() * 100,
+                delay: Math.random() * 20, dur: Math.random() * 12 + 18,
+                color: i % 3 === 0 ? '#00D4FF' : i % 3 === 1 ? '#7C3AED' : '#10B981',
+                opacity: Math.random() * 0.5 + 0.15,
+            }))), []);
+            return (
+                <Box sx={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
+                    {pts.map(p => (
+                        <div key={p.id} className="ptcl" style={{
+                            width: p.size, height: p.size, left: `${p.left}%`, background: p.color,
+                            opacity: p.opacity, animationDelay: `${p.delay}s`, animationDuration: `${p.dur}s`,
+                        }} />
+                    ))}
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── TYPED TEXT ─────────────────────── */
+        function Typed({ texts }) {
+            const [cur, setCur] = React.useState('');
+            const [idx, setIdx] = React.useState(0);
+            const [del, setDel] = React.useState(false);
+            React.useEffect(() => {
+                const t = texts[idx];
+                let tm;
+                if (!del && cur.length < t.length) tm = setTimeout(() => setCur(t.slice(0, cur.length + 1)), 75);
+                else if (!del && cur.length === t.length) tm = setTimeout(() => setDel(true), 2200);
+                else if (del && cur.length > 0) tm = setTimeout(() => setCur(cur.slice(0, -1)), 38);
+                else if (del) { setDel(false); setIdx((idx + 1) % texts.length); }
+                return () => clearTimeout(tm);
+            }, [cur, del, idx, texts]);
+            return <span><span style={{ color: '#00D4FF' }}>{cur}</span><span className="cursor" /></span>;
+        }
+
+        /* ─────────────────────── HOOKS ─────────────────────── */
+        function useReveal() {
+            React.useEffect(() => {
+                const obs = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('vis');
+                            e.target.querySelectorAll('.sb-fill').forEach(b => { b.style.width = b.dataset.w });
+                        }
+                    });
+                }, { threshold: 0.12 });
+                document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-scale').forEach(el => obs.observe(el));
+                return () => obs.disconnect();
+            }, []);
+        }
+
+        function useScrollProgress() {
+            React.useEffect(() => {
+                const fn = () => {
+                    const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+                    const el = document.getElementById('sp');
+                    if (el) el.style.width = p + '%';
+                };
+                window.addEventListener('scroll', fn);
+                return () => window.removeEventListener('scroll', fn);
+            }, []);
+        }
+
+        function useActiveSection() {
+            const [active, setActive] = React.useState('hero');
+            React.useEffect(() => {
+                const fn = () => {
+                    const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'contact'];
+                    for (const s of sections.reverse()) {
+                        const el = document.getElementById(s);
+                        if (el && window.scrollY >= el.offsetTop - 120) { setActive(s); break; }
+                    }
+                };
+                window.addEventListener('scroll', fn);
+                return () => window.removeEventListener('scroll', fn);
+            }, []);
+            return active;
+        }
+
+        /* ─────────────────────── SECTION HEADER ─────────────────────── */
+        function SecHead({ label, title, sub }) {
+            return (
+                <Box className="reveal" sx={{ textAlign: 'center', mb: 7 }}>
+                    <Typography className="mono" sx={{ color: '#00D4FF', fontSize: '0.78rem', letterSpacing: 3, textTransform: 'uppercase', mb: 1 }}>
+                        {label}
+                    </Typography>
+                    <Typography variant="h2" className="grad-text" sx={{ fontSize: { xs: '2rem', md: '2.8rem' }, fontWeight: 800, mb: sub ? 2 : 0 }}>
+                        {title}
+                    </Typography>
+                    {sub && <Typography sx={{ color: '#475569', maxWidth: 480, mx: 'auto', fontSize: '0.9rem' }}>{sub}</Typography>}
+                    <Box sx={{ width: 56, height: 3, background: 'linear-gradient(90deg,#00D4FF,#7C3AED)', borderRadius: 2, mx: 'auto', mt: 2 }} />
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── NAVBAR ─────────────────────── */
+        function Navbar() {
+            const [scrolled, setScrolled] = React.useState(false);
+            const [mOpen, setMOpen] = React.useState(false);
+            const active = useActiveSection();
+            React.useEffect(() => {
+                const fn = () => setScrolled(window.scrollY > 60);
+                window.addEventListener('scroll', fn);
+                return () => window.removeEventListener('scroll', fn);
+            }, []);
+            const goTo = id => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setMOpen(false) };
+            const links = ['about', 'skills', 'experience', 'projects', 'contact'];
+            return (
+                <Box component="nav" sx={{
+                    position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+                    background: scrolled ? 'rgba(6,13,26,0.88)' : 'transparent',
+                    backdropFilter: scrolled ? 'blur(20px)' : 'none',
+                    borderBottom: scrolled ? '1px solid rgba(0,212,255,0.1)' : 'none',
+                    transition: 'all 0.35s ease',
+                    px: { xs: 2, sm: 4, md: 7 }, py: { xs: 1.5, md: 2 },
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2, cursor: 'pointer' }} onClick={() => goTo('hero')}>
+                        <Box sx={{
+                            width: 34, height: 34, borderRadius: 2, background: 'linear-gradient(135deg,#00D4FF,#7C3AED)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center'
+                        }}>
+                            <Typography className="mono" sx={{ fontWeight: 900, fontSize: '0.85rem', color: '#fff', lineHeight: 1 }}>GM</Typography>
+                        </Box>
+                        <Box>
+                            <Typography sx={{ fontWeight: 700, fontSize: '0.93rem', color: '#E2E8F0', lineHeight: 1.1 }}>Guru Mohan</Typography>
+                            <Typography sx={{ fontWeight: 400, fontSize: '0.65rem', color: '#475569', lineHeight: 1, letterSpacing: .5 }}>React Developer</Typography>
+                        </Box>
+                    </Box>
+                    {/* Desktop */}
+                    <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4, alignItems: 'center' }}>
+                        {links.map(l => (
+                            <a key={l} href="#" className={`nav-a${active === l ? ' active' : ''}`}
+                                onClick={e => { e.preventDefault(); goTo(l) }}>{l.charAt(0).toUpperCase() + l.slice(1)}</a>
+                        ))}
+                        <Button variant="contained" size="small" onClick={() => goTo('contact')}
+                            sx={{
+                                background: 'linear-gradient(135deg,#00D4FF,#7C3AED)', ml: 1, px: 3, borderRadius: 20, fontSize: 13,
+                                '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 6px 20px rgba(0,212,255,0.4)' }, transition: 'all .3s'
+                            }}>
+                            Hire Me
+                        </Button>
+                    </Box>
+                    {/* Mobile hamburger */}
+                    <Box sx={{ display: { xs: 'flex', md: 'none' }, cursor: 'pointer' }} onClick={() => setMOpen(!mOpen)}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '5px', width: 22 }}>
+                            {[0, 1, 2].map(i => (
+                                <Box key={i} sx={{
+                                    height: '2px', background: '#00D4FF', borderRadius: 1, transition: 'all .3s',
+                                    transform: mOpen ? (i === 1 ? 'scaleX(0)' : i === 0 ? 'rotate(45deg) translateY(7px)' : 'rotate(-45deg) translateY(-7px)') : 'none'
+                                }} />
+                            ))}
+                        </Box>
+                    </Box>
+                    {/* Mobile menu */}
+                    {mOpen && (
+                        <Box sx={{
+                            position: 'absolute', top: '100%', left: 0, right: 0,
+                            background: 'rgba(6,13,26,0.97)', backdropFilter: 'blur(20px)',
+                            borderBottom: '1px solid rgba(0,212,255,0.1)', p: 3, display: 'flex', flexDirection: 'column', gap: 2.5
+                        }}>
+                            {links.map(l => (
+                                <a key={l} href="#" className="nav-a" style={{ fontSize: 15 }}
+                                    onClick={e => { e.preventDefault(); goTo(l) }}>{l.charAt(0).toUpperCase() + l.slice(1)}</a>
+                            ))}
+                            <Button variant="contained" onClick={() => goTo('contact')}
+                                sx={{ background: 'linear-gradient(135deg,#00D4FF,#7C3AED)', borderRadius: 20, mt: 1 }}>Hire Me</Button>
+                        </Box>
+                    )}
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── HERO ─────────────────────── */
+        function Hero() {
+            return (
+                <Box id="hero" className="grid-bg" sx={{
+                    minHeight: '100vh', position: 'relative', display: 'flex',
+                    alignItems: 'center', overflow: 'hidden',
+                    background: 'radial-gradient(ellipse at 15% 50%,rgba(0,212,255,0.12) 0%,transparent 55%),radial-gradient(ellipse at 85% 20%,rgba(124,58,237,0.12) 0%,transparent 55%),radial-gradient(ellipse at 50% 85%,rgba(16,185,129,0.08) 0%,transparent 50%),#060D1A',
+                }}>
+                    <Particles />
+                    {/* Decorative rings */}
+                    <Box sx={{
+                        position: 'absolute', top: '18%', right: '8%', width: 320, height: 320,
+                        border: '1px solid rgba(0,212,255,0.08)', borderRadius: '50%',
+                        animation: 'spinSlow 25s linear infinite', opacity: .6
+                    }} />
+                    <Box sx={{
+                        position: 'absolute', top: '25%', right: '12%', width: 210, height: 210,
+                        border: '1px solid rgba(124,58,237,0.08)', borderRadius: '50%',
+                        animation: 'spinSlowR 18s linear infinite', opacity: .6
+                    }} />
+                    <Box sx={{
+                        position: 'absolute', bottom: '15%', left: '5%', width: 180, height: 180,
+                        border: '1px solid rgba(16,185,129,0.06)', borderRadius: '50%',
+                        animation: 'spinSlow 30s linear infinite', opacity: .5
+                    }} />
+
+                    <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, pt: { xs: 14, md: 12 }, pb: 8 }}>
+                        <Grid container spacing={4} alignItems="center">
+                            <Grid item xs={12} md={7}>
+                                <Box sx={{ animation: 'fadeLeft 0.9s ease both' }}>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+                                        <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: '#10B981', animation: 'blink 1.5s ease infinite' }} />
+                                        <Typography className="mono" sx={{ color: '#10B981', fontSize: '0.8rem', letterSpacing: 2 }}>Available for opportunities</Typography>
+                                    </Box>
+                                    <Typography sx={{
+                                        fontSize: { xs: '2.6rem', sm: '3.2rem', md: '4rem' }, fontWeight: 900, lineHeight: 1.05, mb: 2,
+                                        background: 'linear-gradient(135deg,#fff 0%,#E2E8F0 50%,#94A3B8 100%)',
+                                        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'
+                                    }}>
+                                        {ME.short}
+                                    </Typography>
+                                    <Typography sx={{ fontSize: { xs: '1.2rem', md: '1.5rem' }, fontWeight: 600, mb: 3, minHeight: { xs: '1.8rem', md: '2.2rem' }, color: '#CBD5E1' }}>
+                                        <Typed texts={ME.roles} />
+                                    </Typography>
+                                    <Typography sx={{ color: '#64748B', lineHeight: 1.85, mb: 4, maxWidth: 540, fontSize: '0.92rem' }}>
+                                        {ME.summary}
+                                    </Typography>
+                                    <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
+                                        <Button variant="contained" size="large"
+                                            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                                            sx={{
+                                                background: 'linear-gradient(135deg,#00D4FF,#7C3AED)', px: 4, borderRadius: 24, fontSize: 14,
+                                                '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 10px 30px rgba(0,212,255,0.4)' }, transition: 'all .3s'
+                                            }}>
+                                            View Projects ↗
+                                        </Button>
+                                        <Button variant="outlined" size="large"
+                                            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                                            sx={{
+                                                borderColor: 'rgba(0,212,255,0.4)', color: '#00D4FF', px: 4, borderRadius: 24, fontSize: 14,
+                                                '&:hover': { background: 'rgba(0,212,255,0.08)', borderColor: '#00D4FF', transform: 'translateY(-3px)' }, transition: 'all .3s'
+                                            }}>
+                                            Contact Me
+                                        </Button>
+                                    </Box>
+                                    <Box sx={{ display: 'flex', gap: .8, flexWrap: 'wrap' }}>
+                                        {['React.js', 'Java', 'Spring Boot', 'MUI', 'MySQL', 'JWT', 'REST API'].map(t => (
+                                            <span key={t} className="chip" style={{
+                                                background: 'rgba(0,212,255,0.05)', borderColor: 'rgba(0,212,255,0.15)',
+                                                color: '#64748B', fontSize: '10px', fontFamily: 'JetBrains Mono,monospace'
+                                            }}>{t}</span>
+                                        ))}
+                                    </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} md={5} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                <Box sx={{ animation: 'fadeRight 0.9s ease 0.2s both', position: 'relative', display: 'inline-block' }}>
+                                    {/* Main avatar */}
+                                    <Box sx={{
+                                        width: { xs: 220, md: 280 }, height: { xs: 220, md: 280 }, borderRadius: '50%',
+                                        background: 'linear-gradient(135deg,rgba(0,212,255,0.08),rgba(124,58,237,0.08))',
+                                        border: '1.5px solid rgba(0,212,255,0.2)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        position: 'relative', animation: 'float 4s ease-in-out infinite',
+                                        '&::before': {
+                                            content: '""', position: 'absolute', inset: -12, borderRadius: '50%',
+                                            border: '1px dashed rgba(0,212,255,0.15)', animation: 'spinSlow 22s linear infinite'
+                                        },
+                                        '&::after': {
+                                            content: '""', position: 'absolute', inset: -24, borderRadius: '50%',
+                                            border: '1px dashed rgba(124,58,237,0.1)', animation: 'spinSlowR 30s linear infinite'
+                                        },
+                                    }}>
+                                        <Typography className="grad-text mono" sx={{ fontSize: { xs: '3.5rem', md: '4.5rem' }, fontWeight: 900 }}>GM</Typography>
+                                    </Box>
+                                    {/* Floating badges */}
+                                    {[
+                                        { label: '3+ Yrs Exp', icon: '🚀', color: '#00D4FF', top: '5%', right: '-12%' },
+                                        { label: 'React Dev', icon: '⚛', color: '#61DAFB', bottom: '22%', left: '-18%' },
+                                        { label: 'Full Stack', icon: '💻', color: '#10B981', bottom: '-2%', right: '-8%' },
+                                    ].map((b, i) => (
+                                        <Box key={i} sx={{
+                                            position: 'absolute', top: b.top, right: b.right, bottom: b.bottom, left: b.left,
+                                            background: `${b.color}18`, border: `1px solid ${b.color}33`,
+                                            borderRadius: 20, px: 1.5, py: .5, backdropFilter: 'blur(10px)',
+                                            animation: `floatSlow ${3 + i * .6}s ease-in-out ${i * .4}s infinite`
+                                        }}>
+                                            <Typography sx={{ color: b.color, fontSize: '11px', fontWeight: 700, whiteSpace: 'nowrap' }}>
+                                                {b.icon} {b.label}
+                                            </Typography>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── ABOUT ─────────────────────── */
+        function About() {
+            return (
+                <Box id="about" sx={{ py: { xs: 10, md: 14 }, background: '#080E1C' }}>
+                    <Container maxWidth="lg">
+                        <SecHead label="// about me" title="Who Am I?" />
+                        <Grid container spacing={5} alignItems="flex-start">
+                            <Grid item xs={12} md={6}>
+                                <Box className="reveal-l">
+                                    <Typography sx={{ color: '#94A3B8', lineHeight: 1.9, mb: 3, fontSize: '0.93rem' }}>
+                                        I'm a <span style={{ color: '#00D4FF', fontWeight: 600 }}>React.js Developer</span> with{' '}
+                                        <span style={{ color: '#00D4FF', fontWeight: 600 }}>3+ years of full-time experience</span>{' '}
+                                        at VMK IT Services Pvt. Ltd., Hyderabad, specializing in enterprise-grade web applications.
+                                    </Typography>
+                                    <Typography sx={{ color: '#94A3B8', lineHeight: 1.9, mb: 4, fontSize: '0.93rem' }}>
+                                        I've delivered two production enterprise systems — an{' '}
+                                        <span style={{ color: '#7C3AED', fontWeight: 600 }}>HR & Payroll Management System</span>{' '}
+                                        and an ongoing{' '}
+                                        <span style={{ color: '#7C3AED', fontWeight: 600 }}>Enterprise Pharma Management System</span>.
+                                        I bring both frontend and backend skills to deliver complete solutions.
+                                    </Typography>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+                                        {[
+                                            { icon: '✉', label: 'Email', val: ME.email, color: '#00D4FF', href: `mailto:${ME.email}` },
+                                            { icon: '📞', label: 'Phone', val: ME.phone, color: '#7C3AED', href: `tel:${ME.phone}` },
+                                            { icon: '📍', label: 'Location', val: ME.location, color: '#10B981', href: null },
+                                            { icon: '🎓', label: 'Education', val: 'B.Tech ECE — JNTU Anantapur (2017–2021)', color: '#F59E0B', href: null },
+                                        ].map(item => (
+                                            <Box key={item.label} component={item.href ? 'a' : 'div'} href={item.href || undefined}
+                                                className="glass card-hover" style={{
+                                                    textDecoration: 'none',
+                                                    padding: '14px 18px', borderRadius: 12, display: 'flex', alignItems: 'center',
+                                                    gap: 14, border: `1px solid ${item.color}18`
+                                                }}>
+                                                <Box sx={{
+                                                    width: 42, height: 42, borderRadius: 2.5, background: `${item.color}18`,
+                                                    display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', flexShrink: 0
+                                                }}>
+                                                    {item.icon}
+                                                </Box>
+                                                <Box>
+                                                    <Typography sx={{ color: '#334155', fontSize: '10px', textTransform: 'uppercase', letterSpacing: 1, mb: .2 }}>{item.label}</Typography>
+                                                    <Typography sx={{ color: item.href ? item.color : '#E2E8F0', fontWeight: 500, fontSize: '0.88rem' }}>{item.val}</Typography>
+                                                </Box>
+                                            </Box>
+                                        ))}
+                                    </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                                <Box className="reveal-r">
+                                    <Grid container spacing={2} sx={{ mb: 3 }}>
+                                        {STATS.map((s, i) => (
+                                            <Grid item xs={6} key={i}>
+                                                <Box className="reveal-scale glass card-hover"
+                                                    style={{
+                                                        transitionDelay: `${i * .1}s`, padding: '22px', borderRadius: 16,
+                                                        textAlign: 'center', border: '1px solid rgba(0,212,255,0.08)'
+                                                    }}>
+                                                    <Typography sx={{ fontSize: '2rem' }}>{s.icon}</Typography>
+                                                    <Typography className="grad-text mono" sx={{ fontSize: '2.2rem', fontWeight: 800, lineHeight: 1 }}>{s.val}</Typography>
+                                                    <Typography sx={{ color: '#475569', fontSize: '0.78rem', mt: .5 }}>{s.label}</Typography>
+                                                </Box>
+                                            </Grid>
+                                        ))}
+                                    </Grid>
+                                    {/* Competencies */}
+                                    <Box className="glass" sx={{ p: 3, borderRadius: 3, border: '1px solid rgba(124,58,237,0.15)' }}>
+                                        <Typography sx={{ fontWeight: 700, fontSize: '0.9rem', mb: 2, color: '#E2E8F0' }}>Core Competencies</Typography>
+                                        {[
+                                            'React.js UI Development (3+ Yrs)', 'Spring Boot & REST API Dev',
+                                            'JWT Authentication & Spring Security', 'Role-Based Access Control (RBAC)',
+                                            'MySQL Database Design & ORM', 'Enterprise Workflow Development',
+                                            'Agile / Scrum & GitLab CI/CD', 'Client Communication & UAT Support',
+                                        ].map((c, i) => (
+                                            <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                                                <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#00D4FF,#7C3AED)', flexShrink: 0 }} />
+                                                <Typography sx={{ color: '#94A3B8', fontSize: '0.83rem' }}>{c}</Typography>
+                                            </Box>
+                                        ))}
+                                    </Box>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── SKILLS ─────────────────────── */
+        function Skills() {
+            const cats = Object.keys(SKILLS);
+            const [active, setActive] = React.useState('Frontend');
+            const [filled, setFilled] = React.useState(false);
+            const sectionRef = React.useRef(null);
+
+            /* Re-trigger bar animation whenever tab changes */
+            React.useEffect(() => {
+                setFilled(false);
+                const t = setTimeout(() => setFilled(true), 120);
+                return () => clearTimeout(t);
+            }, [active]);
+
+            /* Trigger on first scroll into view */
+            React.useEffect(() => {
+                const el = sectionRef.current;
+                if (!el) return;
+                const obs = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting) { setFilled(false); setTimeout(() => setFilled(true), 120); }
+                }, { threshold: 0.15 });
+                obs.observe(el);
+                return () => obs.disconnect();
+            }, []);
+
+            const switchTab = (c) => { setActive(c); };
+
+            return (
+                <Box id="skills" ref={sectionRef} sx={{ py: { xs: 10, md: 14 }, background: '#060D1A' }}>
+                    <Container maxWidth="lg">
+                        <SecHead label="// technical skills" title="My Tech Stack" sub="Technologies I build with every day" />
+                        {/* Category tabs */}
+                        <Box className="reveal" sx={{ display: 'flex', gap: 1, justifyContent: 'center', flexWrap: 'wrap', mb: 5 }}>
+                            {cats.map(c => (
+                                <button key={c} className={`s-tab${active === c ? ' act' : ''}`} onClick={() => switchTab(c)}>{c}</button>
+                            ))}
+                        </Box>
+                        {/* Skill bars — animation driven by `filled` state, not IntersectionObserver */}
+                        <Grid container spacing={3}>
+                            {SKILLS[active].map((s, i) => (
+                                <Grid item xs={12} sm={6} key={`${active}-${s.n}`}>
+                                    <Box className="glass card-hover"
+                                        style={{
+                                            opacity: filled ? 1 : 0,
+                                            transform: filled ? 'translateY(0)' : 'translateY(18px)',
+                                            transition: `opacity .5s ease ${i * 0.08}s, transform .5s ease ${i * 0.08}s`,
+                                            padding: '18px 20px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)',
+                                        }}>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+                                            <Typography sx={{ fontWeight: 600, fontSize: '0.88rem', color: '#E2E8F0' }}>{s.n}</Typography>
+                                            <Typography className="mono" sx={{ color: '#00D4FF', fontSize: '0.8rem', fontWeight: 700 }}>{s.v}%</Typography>
+                                        </Box>
+                                        <div className="sb-wrap">
+                                            <div style={{
+                                                height: '100%', borderRadius: 3,
+                                                width: filled ? `${s.v}%` : '0%',
+                                                background: 'linear-gradient(90deg,#00D4FF,#7C3AED)',
+                                                transition: `width 1.3s ease ${i * 0.1}s`,
+                                            }} />
+                                        </div>
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                        {/* All tech chips */}
+                        <Box className="reveal" sx={{ mt: 7, textAlign: 'center' }}>
+                            <Typography sx={{ color: '#334155', fontSize: '10px', mb: 3, letterSpacing: 2, textTransform: 'uppercase' }} className="mono">
+                                All Technologies
+                            </Typography>
+                            <Box>
+                                {ALL_TECH.map(t => (
+                                    <span key={t.n} className="chip" style={{
+                                        background: `${t.c}12`, borderColor: `${t.c}38`, color: t.c
+                                    }}>{t.n}</span>
+                                ))}
+                            </Box>
+                        </Box>
+                    </Container>
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── EXPERIENCE ─────────────────────── */
+        function Experience() {
+            return (
+                <Box id="experience" sx={{ py: { xs: 10, md: 14 }, background: '#080E1C' }}>
+                    <Container maxWidth="lg">
+                        <SecHead label="// work experience" title="My Journey" />
+                        <Box sx={{ position: 'relative', pl: { xs: 5, md: 7 }, mt: 3 }}>
+                            <div className="tl-line" />
+                            {/* Job */}
+                            {EXPERIENCE.map((exp, i) => (
+                                <Box key={i} className="reveal" sx={{ position: 'relative', mb: 4 }}>
+                                    <div className="tl-dot" style={{ top: 22, background: exp.color, boxShadow: `0 0 12px ${exp.color}` }} />
+                                    <Box className="glass card-hover" sx={{
+                                        ml: { xs: 2, md: 3 }, p: { xs: 2.5, md: 3.5 }, borderRadius: 3,
+                                        border: `1px solid ${exp.color}22`,
+                                        '&:hover': { borderColor: `${exp.color}55`, transform: 'translateX(6px)' },
+                                    }}>
+                                        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                                            <Box>
+                                                <Typography sx={{ fontWeight: 700, fontSize: { xs: '0.95rem', md: '1.05rem' }, color: exp.color, mb: .3 }}>{exp.role}</Typography>
+                                                <Typography sx={{ color: '#E2E8F0', fontWeight: 600, fontSize: '0.95rem' }}>{exp.company}</Typography>
+                                                <Typography sx={{ color: '#475569', fontSize: '0.82rem' }}>{exp.location}</Typography>
+                                            </Box>
+                                            <Box sx={{ textAlign: { xs: 'left', sm: 'right' }, mt: { xs: 1, sm: 0 }, display: 'flex', flexDirection: 'column', gap: .5, alignItems: { xs: 'flex-start', sm: 'flex-end' } }}>
+                                                <span className="chip" style={{ background: `${exp.color}18`, borderColor: `${exp.color}38`, color: exp.color, fontSize: '10px' }}>{exp.period}</span>
+                                                <span className="chip" style={{ background: 'rgba(16,185,129,0.12)', borderColor: 'rgba(16,185,129,0.3)', color: '#10B981', fontSize: '10px' }}>{exp.type}</span>
+                                            </Box>
+                                        </Box>
+                                        <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)', mb: 2 }} />
+                                        <Box component="ul" sx={{ m: 0, pl: 2.5 }}>
+                                            {exp.points.map((pt, j) => (
+                                                <Box component="li" key={j} sx={{ color: '#94A3B8', fontSize: '0.858rem', lineHeight: 1.85, mb: .5 }}>{pt}</Box>
+                                            ))}
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            ))}
+                            {/* Education */}
+                            <Box className="reveal" sx={{ position: 'relative' }}>
+                                <div className="tl-dot" style={{ top: 22, background: EDUCATION.color, boxShadow: `0 0 12px ${EDUCATION.color}`, ['--dot-color']: EDUCATION.color }} />
+                                <Box className="glass card-hover" sx={{
+                                    ml: { xs: 2, md: 3 }, p: { xs: 2.5, md: 3 }, borderRadius: 3,
+                                    border: `1px solid ${EDUCATION.color}22`,
+                                    '&:hover': { borderColor: `${EDUCATION.color}55`, transform: 'translateX(6px)' },
+                                }}>
+                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 1 }}>
+                                        <Box>
+                                            <Typography sx={{ fontWeight: 700, fontSize: '0.98rem', color: EDUCATION.color }}>🎓 {EDUCATION.degree}</Typography>
+                                            <Typography sx={{ color: '#94A3B8', fontSize: '0.87rem', mt: .3 }}>{EDUCATION.university}</Typography>
+                                        </Box>
+                                        <span className="chip" style={{ background: `${EDUCATION.color}15`, borderColor: `${EDUCATION.color}35`, color: EDUCATION.color, fontSize: '10px' }}>{EDUCATION.period}</span>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Container>
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── PROJECT DIALOG ─────────────────────── */
+        function ProjDialog({ p, open, onClose }) {
+            if (!p) return null;
+            return (
+                <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth
+                    PaperProps={{ sx: { background: '#0D1B2E', border: `1px solid ${p.color}28`, borderRadius: '20px !important' } }}>
+                    <DialogTitle sx={{ borderBottom: '1px solid rgba(255,255,255,0.07)', pb: 2, pt: 3, px: 3 }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                                <Box sx={{ width: 50, height: 50, borderRadius: 3, background: `${p.color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', flexShrink: 0 }}>{p.icon}</Box>
+                                <Box>
+                                    <Typography sx={{ fontWeight: 700, fontSize: '1.05rem', color: p.color }}>{p.title}</Typography>
+                                    <Typography sx={{ color: '#475569', fontSize: '0.8rem' }}>{p.period} · {p.duration}</Typography>
+                                </Box>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: .5 }}>
+                                <span className="chip" style={{ background: `${p.statusColor}18`, borderColor: `${p.statusColor}38`, color: p.statusColor, fontSize: '10px' }}>● {p.status}</span>
+                                <IconButton onClick={onClose} size="small" sx={{ color: '#475569', '&:hover': { color: '#E2E8F0' } }}>✕</IconButton>
+                            </Box>
+                        </Box>
+                    </DialogTitle>
+                    <DialogContent sx={{ pt: 3, px: 3 }}>
+                        <Typography sx={{ color: '#94A3B8', lineHeight: 1.85, mb: 3, fontSize: '0.9rem' }}>{p.description}</Typography>
+                        <Typography sx={{ fontWeight: 700, color: '#E2E8F0', mb: 2, fontSize: '0.92rem' }}>Key Highlights</Typography>
+                        {p.highlights.map((h, i) => (
+                            <Box key={i} sx={{ display: 'flex', gap: 1.5, mb: 1.5, alignItems: 'flex-start' }}>
+                                <Box sx={{ width: 7, height: 7, borderRadius: '50%', background: `linear-gradient(135deg,${p.color},#7C3AED)`, mt: .7, flexShrink: 0 }} />
+                                <Typography sx={{ color: '#94A3B8', fontSize: '0.87rem', lineHeight: 1.75 }}>{h}</Typography>
+                            </Box>
+                        ))}
+                        <Box sx={{ mt: 3, pb: 1 }}>
+                            <Typography sx={{ fontWeight: 700, color: '#E2E8F0', mb: 1.5, fontSize: '0.92rem' }}>Tech Stack</Typography>
+                            {p.tech.map(t => (
+                                <span key={t} className="chip" style={{ background: `${p.color}12`, borderColor: `${p.color}30`, color: p.color }}>{t}</span>
+                            ))}
+                        </Box>
+                    </DialogContent>
+                </Dialog>
+            );
+        }
+
+        /* ─────────────────────── PROJECTS ─────────────────────── */
+        function Projects() {
+            const [sel, setSel] = React.useState(null);
+            return (
+                <Box id="projects" sx={{ py: { xs: 10, md: 14 }, background: '#060D1A' }}>
+                    <Container maxWidth="lg">
+                        <SecHead label="// portfolio" title="My Projects" sub="Production enterprise applications built and delivered" />
+                        <Grid container spacing={4}>
+                            {PROJECTS.map((p, i) => (
+                                <Grid item xs={12} md={6} key={i}>
+                                    <Box className={`proj-card reveal${i % 2 === 0 ? '-l' : '-r'}`}
+                                        style={{ transitionDelay: `${i * .15}s` }}
+                                        onClick={() => setSel(p)}
+                                        sx={{ '&:hover': { boxShadow: `0 20px 50px ${p.color}20`, borderColor: `${p.color}44` } }}>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2.5 }}>
+                                            <Box sx={{
+                                                width: 54, height: 54, borderRadius: 3, background: `${p.color}18`,
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.7rem',
+                                                border: `1px solid ${p.color}25`
+                                            }}>{p.icon}</Box>
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: .5, alignItems: 'flex-end' }}>
+                                                <span className="chip" style={{ background: `${p.statusColor}18`, borderColor: `${p.statusColor}38`, color: p.statusColor, fontSize: '10px' }}>● {p.status}</span>
+                                                <span className="chip" style={{ background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(255,255,255,0.1)', color: '#64748B', fontSize: '10px' }}>{p.duration}</span>
+                                            </Box>
+                                        </Box>
+                                        <Typography sx={{ fontWeight: 700, fontSize: '1.1rem', color: '#E2E8F0', mb: .5 }}>{p.title}</Typography>
+                                        <Typography sx={{ color: '#334155', fontSize: '0.78rem', mb: 2, fontFamily: "'JetBrains Mono',monospace" }}>{p.period}</Typography>
+                                        <Typography sx={{ color: '#64748B', fontSize: '0.86rem', lineHeight: 1.75, mb: 3 }}>{p.short}</Typography>
+                                        <Box sx={{ mb: 3 }}>
+                                            {p.tech.slice(0, 4).map(t => (
+                                                <span key={t} className="chip" style={{ background: `${p.color}12`, borderColor: `${p.color}28`, color: p.color, fontSize: '10px' }}>{t}</span>
+                                            ))}
+                                            {p.tech.length > 4 && <span className="chip" style={{ background: 'rgba(100,116,139,0.15)', borderColor: 'rgba(100,116,139,0.25)', color: '#64748B', fontSize: '10px' }}>+{p.tech.length - 4} more</span>}
+                                        </Box>
+                                        <Box sx={{
+                                            display: 'flex', alignItems: 'center', gap: .5, color: p.color, fontSize: '13px', fontWeight: 600, transition: 'gap .3s',
+                                            '&:hover': { gap: 1 }
+                                        }}>
+                                            <span>View Details</span><span>→</span>
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Container>
+                    <ProjDialog p={sel} open={!!sel} onClose={() => setSel(null)} />
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── CONTACT ─────────────────────── */
+        function Contact() {
+            const [sent, setSent] = React.useState(false);
+            return (
+                <Box id="contact" sx={{ py: { xs: 10, md: 14 }, background: '#080E1C' }}>
+                    <Container maxWidth="lg">
+                        <SecHead label="// get in touch" title="Contact Me" sub="Open to full-time roles, freelance projects, and collaborations" />
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} md={5}>
+                                <Box className="reveal-l">
+                                    <Typography sx={{ fontWeight: 600, fontSize: '1rem', mb: 3, color: '#E2E8F0' }}>Let's build something great together</Typography>
+                                    {[
+                                        { icon: '✉', label: 'Email', val: ME.email, color: '#00D4FF', href: `mailto:${ME.email}` },
+                                        { icon: '📞', label: 'Phone', val: ME.phone, color: '#7C3AED', href: `tel:${ME.phone}` },
+                                        { icon: '📍', label: 'Location', val: ME.location, color: '#10B981', href: null },
+                                    ].map(item => (
+                                        <Box key={item.label} component={item.href ? 'a' : 'div'} href={item.href || undefined}
+                                            className="glass card-hover"
+                                            style={{
+                                                marginBottom: 14, textDecoration: 'none', display: 'flex', alignItems: 'center',
+                                                gap: 16, padding: '16px 20px', borderRadius: 14, border: `1px solid ${item.color}20`
+                                            }}>
+                                            <Box sx={{
+                                                width: 46, height: 46, borderRadius: 3, background: `${item.color}18`,
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.35rem', flexShrink: 0
+                                            }}>{item.icon}</Box>
+                                            <Box>
+                                                <Typography sx={{ color: '#334155', fontSize: '10px', textTransform: 'uppercase', letterSpacing: 1, mb: .2 }}>{item.label}</Typography>
+                                                <Typography sx={{ color: item.href ? item.color : '#E2E8F0', fontWeight: 600, fontSize: '0.87rem' }}>{item.val}</Typography>
+                                            </Box>
+                                        </Box>
+                                    ))}
+                                    {/* Open to work banner */}
+                                    <Box className="glass" sx={{
+                                        p: 2.5, borderRadius: 3, border: '1px solid rgba(16,185,129,0.2)', mt: 2,
+                                        background: 'rgba(16,185,129,0.04)'
+                                    }}>
+                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                                            <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: '#10B981', animation: 'blink 1.5s ease infinite', flexShrink: 0 }} />
+                                            <Box>
+                                                <Typography sx={{ color: '#10B981', fontWeight: 700, fontSize: '0.87rem' }}>Open to Opportunities</Typography>
+                                                <Typography sx={{ color: '#475569', fontSize: '0.78rem' }}>Full-time · Contract · Freelance</Typography>
+                                            </Box>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} md={7}>
+                                <Box className="reveal-r glass" sx={{ p: { xs: 3, md: 4 }, borderRadius: 3, border: '1px solid rgba(0,212,255,0.1)' }}>
+                                    {!sent ? (
+                                        <>
+                                            <Typography sx={{ fontWeight: 700, fontSize: '1rem', mb: 3, color: '#E2E8F0' }}>Send a Message</Typography>
+                                            <Grid container spacing={2}>
+                                                <Grid item xs={12} sm={6}>
+                                                    <Typography sx={{ color: '#334155', fontSize: '11px', mb: .6, textTransform: 'uppercase', letterSpacing: .8 }}>Your Name</Typography>
+                                                    <input className="cinput" placeholder="John Doe" />
+                                                </Grid>
+                                                <Grid item xs={12} sm={6}>
+                                                    <Typography sx={{ color: '#334155', fontSize: '11px', mb: .6, textTransform: 'uppercase', letterSpacing: .8 }}>Email</Typography>
+                                                    <input className="cinput" placeholder="john@example.com" />
+                                                </Grid>
+                                                <Grid item xs={12}>
+                                                    <Typography sx={{ color: '#334155', fontSize: '11px', mb: .6, textTransform: 'uppercase', letterSpacing: .8 }}>Subject</Typography>
+                                                    <input className="cinput" placeholder="Job Opportunity / Collaboration" />
+                                                </Grid>
+                                                <Grid item xs={12}>
+                                                    <Typography sx={{ color: '#334155', fontSize: '11px', mb: .6, textTransform: 'uppercase', letterSpacing: .8 }}>Message</Typography>
+                                                    <textarea className="cinput" rows={4} placeholder="Your message here..." />
+                                                </Grid>
+                                                <Grid item xs={12}>
+                                                    <Button variant="contained" fullWidth size="large" onClick={() => setSent(true)}
+                                                        sx={{
+                                                            background: 'linear-gradient(135deg,#00D4FF,#7C3AED)', py: 1.5, borderRadius: 2, fontSize: 14,
+                                                            '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 10px 30px rgba(0,212,255,0.35)' }, transition: 'all .3s'
+                                                        }}>
+                                                        Send Message →
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
+                                        </>
+                                    ) : (
+                                        <Box sx={{ textAlign: 'center', py: 6 }}>
+                                            <Typography sx={{ fontSize: '3.5rem', mb: 2, animation: 'countAnim .5s ease both' }}>🎉</Typography>
+                                            <Typography sx={{ fontWeight: 700, fontSize: '1.2rem', color: '#10B981', mb: 1 }}>Message Sent!</Typography>
+                                            <Typography sx={{ color: '#475569', mb: 3 }}>Thanks for reaching out — I'll get back to you soon.</Typography>
+                                            <Button onClick={() => setSent(false)} variant="outlined" size="small"
+                                                sx={{
+                                                    borderColor: '#00D4FF', color: '#00D4FF', borderRadius: 20,
+                                                    '&:hover': { background: 'rgba(0,212,255,0.08)' }
+                                                }}>
+                                                Send Another
+                                            </Button>
+                                        </Box>
+                                    )}
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── FOOTER ─────────────────────── */
+        function Footer() {
+            const goTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+            return (
+                <Box sx={{ background: '#030810', borderTop: '1px solid rgba(0,212,255,0.08)', py: 4 }}>
+                    <Container maxWidth="lg">
+                        <Box sx={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            gap: 2
+                        }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
+                                <Box sx={{
+                                    width: 30, height: 30, borderRadius: 1.5,
+                                    background: 'linear-gradient(135deg,#00D4FF,#7C3AED)',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                }}>
+                                    <Typography className="mono" sx={{ fontWeight: 900, fontSize: '0.75rem', color: '#fff' }}>GM</Typography>
+                                </Box>
+                                <Typography sx={{ fontWeight: 700, fontSize: '0.95rem', color: '#E2E8F0' }}>
+                                    Guru Mohan
+                                </Typography>
+                            </Box>
+
+                            <Typography sx={{ color: '#1E293B', fontSize: '12px' }}>
+                                Guru Mohan Thetaneela · React.js Developer · Hyderabad
+                            </Typography>
+
+                            <Typography sx={{ color: '#1E293B', fontSize: '11px', textAlign: { xs: 'left', sm: 'right' } }}>
+                                Built with React.js + Material-UI © 2024<br />
+                                <span style={{ color: '#334155' }}>Open to full-time opportunities 🚀</span>
+                            </Typography>
+                        </Box>
+
+                        <Box sx={{ textAlign: 'center', mt: 3 }}>
+                            <Button onClick={goTop} size="small"
+                                sx={{
+                                    color: '#334155',
+                                    border: '1px solid rgba(255,255,255,0.06)',
+                                    borderRadius: 20, fontSize: 11, px: 2,
+                                    '&:hover': {
+                                        color: '#00D4FF',
+                                        borderColor: 'rgba(0,212,255,0.3)',
+                                        background: 'rgba(0,212,255,0.05)'
+                                    }
+                                }}>
+                                ↑ Back to top
+                            </Button>
+                        </Box>
+                    </Container>
+                </Box>
+            );
+        }
+
+        /* ─────────────────────── APP ─────────────────────── */
+        function App() {
+            useReveal();
+            useScrollProgress();
+            return (
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <Navbar />
+                    <Hero />
+                    <About />
+                    <Skills />
+                    <Experience />
+                    <Projects />
+                    <Contact />
+                    <Footer />
+                </ThemeProvider>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 
